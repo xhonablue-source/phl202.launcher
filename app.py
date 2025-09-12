@@ -236,8 +236,7 @@ def main():
         """, unsafe_allow_html=True)
         
         st.markdown('<div class="phl101-btn">', unsafe_allow_html=True)
-        if st.button("Launch App", key="phl101"):
-            st.link_button("🚀 Open PHL 101", "https://philosophy-101-day1.streamlit.app/", use_container_width=True)
+        st.link_button("Launch App", "https://philosophy-101-day1.streamlit.app/", use_container_width=True)
         st.markdown('</div>', unsafe_allow_html=True)
     
     with col2:
@@ -253,9 +252,8 @@ def main():
         </div>
         """, unsafe_allow_html=True)
         
-        st.markdown('<div class="phl202-btn">', unsafe_allow_html=True)
-        if st.button("Launch App", key="phl202"):
-            st.link_button("🚀 Open PHL 202", "https://logic1-phl202.streamlit.app/", use_container_width=True)
+        st.markdown('<div class="phl202-btn">', unsafe_container_width=True)
+        st.link_button("Launch App", "https://logic1-phl202.streamlit.app/", use_container_width=True)
         st.markdown('</div>', unsafe_allow_html=True)
 
     # Divider
