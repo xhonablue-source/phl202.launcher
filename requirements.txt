@@ -1,43 +1,9 @@
-# Philosophy Cognitive Cloud Launcher - Requirements
+# Philosophy Cognitive Cloud Launcher - Streamlit Requirements
 # Developed for Xavier Honablue M.Ed.
 # 
-# This file contains the Python dependencies for the launcher generator
-# Install with: pip install -r requirements.txt
-
-# Core Python libraries (built-in, no installation needed)
-# - os: File system operations
-# - sys: System-specific parameters
-# - pathlib: Object-oriented filesystem paths
-# - datetime: Date and time handling
-# - json: JSON encoder/decoder
+# Required for Streamlit deployment
+streamlit>=1.28.0
 
 # Optional dependencies for enhanced functionality:
-
-# Web framework for local development server (optional)
-flask>=2.3.0
-
-# Template engine for dynamic HTML generation (optional)
-jinja2>=3.1.0
-
-# YAML support for configuration files (optional)
-pyyaml>=6.0
-
-# Environment variable management (optional)
-python-dotenv>=1.0.0
-
-# File watching for auto-regeneration during development (optional)
-watchdog>=3.0.0
-
-# Color output for terminal messages (optional)
-colorama>=0.4.6
-
-# HTTP server for testing (optional - built into Python 3.x)
-# http.server (built-in module)
-
-# Development dependencies (optional)
-# pytest>=7.0.0  # For unit testing
-# black>=23.0.0  # Code formatting
-# flake8>=6.0.0  # Code linting
-
-# Note: The basic launcher generator only uses Python built-in libraries
-# Additional packages above are for enhanced development experience
+pandas>=2.0.0
+numpy>=1.24.0
