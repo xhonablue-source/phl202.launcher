@@ -1,372 +1,318 @@
 """
-CognitiveCloud.ai - Philosophy Module Launcher
-Where Imagination Meets Science - Now Expanding to Philosophy
+CognitiveCloud.ai Philosophy Module Launcher
+Matching the design of the math standards launcher
 """
 
 import streamlit as st
-import base64
 
 def main():
     # Page configuration
     st.set_page_config(
-        page_title="CognitiveCloud.ai - Philosophy Module",
+        page_title="CognitiveCloud.ai Philosophy Module",
         page_icon="🧠",
         layout="wide",
         initial_sidebar_state="collapsed"
     )
 
-    # Custom CSS matching CognitiveCloud.ai branding
+    # Custom CSS matching the CognitiveCloud.ai launcher design
     st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
     
     .stApp {
-        background: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #2d3748 100%);
+        background: #f8f9fa;
         font-family: 'Inter', sans-serif;
     }
     
-    .main-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem;
-    }
-    
-    .header-section {
+    .main-header {
         text-align: center;
-        margin-bottom: 3rem;
-        background: rgba(255, 255, 255, 0.02);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 24px;
-        padding: 3rem 2rem;
+        padding: 2rem 0 3rem 0;
+        background: white;
+        margin-bottom: 2rem;
     }
     
     .brand-title {
-        font-size: 3.5rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-bottom: 1rem;
-        letter-spacing: -0.02em;
-    }
-    
-    .tagline {
-        font-size: 1.2rem;
-        color: #94a3b8;
-        margin-bottom: 0.5rem;
-        font-weight: 300;
-    }
-    
-    .module-subtitle {
-        font-size: 1.8rem;
-        color: #e2e8f0;
-        font-weight: 600;
-        margin-bottom: 1rem;
-    }
-    
-    .developer-info {
-        font-size: 1rem;
-        color: #64748b;
-        font-style: italic;
-        margin-top: 1rem;
-    }
-    
-    .activities-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-        gap: 2rem;
-        margin-bottom: 3rem;
-    }
-    
-    .activity-card {
-        background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(15px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 20px;
-        padding: 2.5rem;
-        position: relative;
-        overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    .activity-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        border-radius: 20px;
-    }
-    
-    .activity-card:hover::before {
-        opacity: 1;
-    }
-    
-    .activity-card:hover {
-        transform: translateY(-8px);
-        border-color: rgba(59, 130, 246, 0.3);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    }
-    
-    .activity-header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 1.5rem;
-        position: relative;
-        z-index: 1;
-    }
-    
-    .activity-icon {
-        width: 60px;
-        height: 60px;
-        border-radius: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.8rem;
-        margin-right: 1rem;
-        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-    }
-    
-    .activity-meta {
-        flex: 1;
-    }
-    
-    .activity-number {
-        font-size: 0.9rem;
-        color: #3b82f6;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-    
-    .activity-title {
         font-size: 1.5rem;
-        color: #f1f5f9;
-        font-weight: 700;
-        margin: 0.5rem 0;
-        position: relative;
-        z-index: 1;
-    }
-    
-    .activity-description {
-        color: #94a3b8;
-        font-size: 1rem;
-        line-height: 1.6;
-        margin-bottom: 2rem;
-        position: relative;
-        z-index: 1;
-    }
-    
-    .launch-btn {
-        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-        color: white;
-        border: none;
-        padding: 0.875rem 2rem;
-        border-radius: 12px;
         font-weight: 600;
-        font-size: 0.95rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        position: relative;
-        z-index: 1;
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .launch-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
-    }
-    
-    .stats-section {
-        background: rgba(255, 255, 255, 0.02);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 20px;
-        padding: 2rem;
-        margin-bottom: 3rem;
-    }
-    
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        text-align: center;
-    }
-    
-    .stat-item {
-        padding: 1rem;
-    }
-    
-    .stat-number {
-        font-size: 2.5rem;
-        font-weight: 800;
-        color: #3b82f6;
+        color: #2d3748;
         margin-bottom: 0.5rem;
     }
     
-    .stat-label {
-        color: #94a3b8;
-        font-size: 0.9rem;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
+    .brand-emoji {
+        color: #e91e63;
+        margin-right: 0.5rem;
     }
     
-    .footer {
-        text-align: center;
+    .subtitle {
+        font-size: 0.9rem;
+        color: #718096;
+        font-weight: 400;
+    }
+    
+    .section-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #2d3748;
+        margin: 2rem 0 1rem 1rem;
+    }
+    
+    .app-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        padding: 0 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .app-card {
+        background: white;
+        border-radius: 12px;
         padding: 2rem;
-        color: #64748b;
-        font-size: 0.9rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        margin-top: 3rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        border: 1px solid #e2e8f0;
+        text-align: center;
+        transition: all 0.2s ease;
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
     
-    .status-badge {
+    .app-card:hover {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        transform: translateY(-2px);
+    }
+    
+    .app-card.phl101 {
+        background: linear-gradient(135deg, #e8f5e8 0%, #f0fff0 100%);
+        border-color: #68d391;
+    }
+    
+    .app-card.phl202 {
+        background: linear-gradient(135deg, #fef5e7 0%, #fffbf0 100%);
+        border-color: #f6ad55;
+    }
+    
+    .app-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .phl101 .app-icon {
+        color: #38a169;
+    }
+    
+    .phl202 .app-icon {
+        color: #dd6b20;
+    }
+    
+    .app-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #2d3748;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+    }
+    
+    .app-description {
+        font-size: 0.85rem;
+        color: #4a5568;
+        line-height: 1.4;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+    }
+    
+    .launch-button {
         display: inline-block;
-        background: rgba(34, 197, 94, 0.1);
-        color: #22c55e;
-        padding: 0.25rem 0.75rem;
+        padding: 0.5rem 1.5rem;
         border-radius: 20px;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         font-weight: 500;
-        margin-left: 1rem;
-        border: 1px solid rgba(34, 197, 94, 0.2);
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    .phl101 .launch-button {
+        background: #38a169;
+        color: white;
+    }
+    
+    .phl101 .launch-button:hover {
+        background: #2f855a;
+    }
+    
+    .phl202 .launch-button {
+        background: #dd6b20;
+        color: white;
+    }
+    
+    .phl202 .launch-button:hover {
+        background: #c05621;
+    }
+    
+    .stButton > button {
+        width: 100%;
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        padding: 0.5rem 1.5rem !important;
+        border-radius: 20px !important;
+        font-size: 0.85rem !important;
+        font-weight: 500 !important;
+        transition: all 0.2s ease !important;
+        font-family: 'Inter', sans-serif !important;
+    }
+    
+    .phl101-btn > div > button {
+        background: #38a169 !important;
+        color: white !important;
+    }
+    
+    .phl101-btn > div > button:hover {
+        background: #2f855a !important;
+    }
+    
+    .phl202-btn > div > button {
+        background: #dd6b20 !important;
+        color: white !important;
+    }
+    
+    .phl202-btn > div > button:hover {
+        background: #c05621 !important;
+    }
+    
+    .divider {
+        height: 1px;
+        background: #e2e8f0;
+        margin: 2rem 0;
     }
     
     @media (max-width: 768px) {
-        .activities-grid {
+        .app-grid {
             grid-template-columns: 1fr;
+            padding: 0 0.5rem;
         }
+        
+        .main-header {
+            padding: 1rem 0 2rem 0;
+        }
+        
         .brand-title {
-            font-size: 2.5rem;
+            font-size: 1.3rem;
         }
     }
     </style>
     """, unsafe_allow_html=True)
 
-    # Main content
+    # Main header matching the original design
     st.markdown("""
-    <div class="main-container">
-        <div class="header-section">
-            <h1 class="brand-title">CognitiveCloud.ai</h1>
-            <p class="tagline">Where Imagination Meets Science</p>
-            <h2 class="module-subtitle">Philosophy Module</h2>
-            <p style="color: #94a3b8; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
-                Expanding beyond STEM into the realm of philosophical inquiry with interactive, 
-                gamified learning experiences that make complex philosophical concepts accessible and engaging.
-            </p>
-            <div class="developer-info">
-                Philosophy Module developed by Xavier Honablue, M.Ed.
-            </div>
-        </div>
+    <div class="main-header">
+        <h1 class="brand-title">
+            <span class="brand-emoji">🧠</span>CognitiveCloud.ai Philosophy Module
+        </h1>
+        <p class="subtitle">Interactive Philosophy Learning Activities • Developed by Xavier Honablue M.Ed.</p>
     </div>
     """, unsafe_allow_html=True)
 
-    # Activities section
+    # Philosophy section title
+    st.markdown('<h2 class="section-title">Philosophy & Critical Thinking</h2>', unsafe_allow_html=True)
+
+    # Apps grid
     col1, col2 = st.columns(2)
     
     with col1:
         st.markdown("""
-        <div class="activity-card">
-            <div class="activity-header">
-                <div class="activity-icon">🤔</div>
-                <div class="activity-meta">
-                    <div class="activity-number">PHL 101</div>
-                    <div class="status-badge">Active</div>
-                </div>
+        <div class="app-card phl101">
+            <div>
+                <div class="app-icon">🤔</div>
+                <h3 class="app-title">What is Religion? What is Philosophy?</h3>
+                <p class="app-description">
+                    Explore fundamental questions about the nature of philosophy and religion through interactive dialogue and critical examination.
+                </p>
             </div>
-            <h3 class="activity-title">What is Religion? What is Philosophy?</h3>
-            <p class="activity-description">
-                Begin your philosophical journey by exploring fundamental questions about the nature 
-                of philosophy and religion. This interactive module examines core philosophical 
-                thinking patterns and the relationship between faith, reason, and human understanding.
-            </p>
         </div>
         """, unsafe_allow_html=True)
         
-        if st.button("🚀 Launch PHL 101 Activity", key="phl101", help="Open Philosophy 101 module"):
-            js = '''
-            <script>
-                window.open("https://philosophy-101-day1.streamlit.app/", "_blank");
-            </script>
-            '''
-            st.components.v1.html(js)
-            st.success("✅ Opening PHL 101: What is Religion? What is Philosophy?")
+        st.markdown('<div class="phl101-btn">', unsafe_allow_html=True)
+        if st.button("Launch App", key="phl101"):
+            st.link_button("🚀 Open PHL 101", "https://philosophy-101-day1.streamlit.app/", use_container_width=True)
+        st.markdown('</div>', unsafe_allow_html=True)
     
     with col2:
         st.markdown("""
-        <div class="activity-card">
-            <div class="activity-header">
-                <div class="activity-icon">🧩</div>
-                <div class="activity-meta">
-                    <div class="activity-number">PHL 202</div>
-                    <div class="status-badge">Active</div>
-                </div>
+        <div class="app-card phl202">
+            <div>
+                <div class="app-icon">🧩</div>
+                <h3 class="app-title">Logic & Cognitive Analysis</h3>
+                <p class="app-description">
+                    Master formal and informal logic through structured reasoning exercises and cognitive analysis tools.
+                </p>
             </div>
-            <h3 class="activity-title">Logic & Cognitive Analysis</h3>
-            <p class="activity-description">
-                Advance your critical thinking skills through formal and informal logic training. 
-                This interactive module uses gamified exercises to master logical reasoning, 
-                argument analysis, and cognitive processing patterns essential for philosophical inquiry.
-            </p>
         </div>
         """, unsafe_allow_html=True)
         
-        if st.button("🚀 Launch PHL 202 Activity", key="phl202", help="Open Logic & Cognitive Analysis module"):
-            js = '''
-            <script>
-                window.open("https://logic1-phl202.streamlit.app/", "_blank");
-            </script>
-            '''
-            st.components.v1.html(js)
-            st.success("✅ Opening PHL 202: Logic & Cognitive Analysis")
+        st.markdown('<div class="phl202-btn">', unsafe_allow_html=True)
+        if st.button("Launch App", key="phl202"):
+            st.link_button("🚀 Open PHL 202", "https://logic1-phl202.streamlit.app/", use_container_width=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
-    # Stats section
-    st.markdown("""
-    <div class="stats-section">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-number">2</div>
-                <div class="stat-label">Active Modules</div>
+    # Divider
+    st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
+
+    # Additional philosophy modules coming soon section
+    st.markdown('<h2 class="section-title">Coming Soon</h2>', unsafe_allow_html=True)
+    
+    col3, col4, col5 = st.columns(3)
+    
+    with col3:
+        st.markdown("""
+        <div class="app-card" style="opacity: 0.6;">
+            <div>
+                <div class="app-icon">⚖️</div>
+                <h3 class="app-title">Ethics & Moral Reasoning</h3>
+                <p class="app-description">
+                    Navigate complex ethical dilemmas through guided moral reasoning frameworks.
+                </p>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Interactive</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">∞</div>
-                <div class="stat-label">Possibilities</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label">Access</div>
+            <div style="padding: 0.5rem 1.5rem; border-radius: 20px; font-size: 0.85rem; background: #e2e8f0; color: #4a5568;">
+                Coming Soon
             </div>
         </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Footer
-    st.markdown("""
-    <div class="footer">
-        <p>
-            <strong>CognitiveCloud.ai</strong> - Expanding the boundaries of educational technology<br>
-            Philosophy Module by Xavier Honablue, M.Ed. | STEM Modules by Dr. Chet<br>
-            Where Imagination Meets Science... and Philosophy
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
+    
+    with col4:
+        st.markdown("""
+        <div class="app-card" style="opacity: 0.6;">
+            <div>
+                <div class="app-icon">🌍</div>
+                <h3 class="app-title">Political Philosophy</h3>
+                <p class="app-description">
+                    Examine different systems of governance and theories of social organization.
+                </p>
+            </div>
+            <div style="padding: 0.5rem 1.5rem; border-radius: 20px; font-size: 0.85rem; background: #e2e8f0; color: #4a5568;">
+                Coming Soon
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col5:
+        st.markdown("""
+        <div class="app-card" style="opacity: 0.6;">
+            <div>
+                <div class="app-icon">🧠</div>
+                <h3 class="app-title">Philosophy of Mind</h3>
+                <p class="app-description">
+                    Explore consciousness, identity, and the nature of mental states through interactive scenarios.
+                </p>
+            </div>
+            <div style="padding: 0.5rem 1.5rem; border-radius: 20px; font-size: 0.85rem; background: #e2e8f0; color: #4a5568;">
+                Coming Soon
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
