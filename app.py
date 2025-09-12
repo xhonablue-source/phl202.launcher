@@ -107,6 +107,7 @@ def main():
         padding: 1rem;
         text-align: center;
         transition: all 0.2s ease;
+        cursor: pointer;
     }
     
     .activity-card:hover {
