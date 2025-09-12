@@ -1,426 +1,243 @@
-#!/usr/bin/env python3
 """
-Philosophy Cognitive Cloud Launcher Generator
+Philosophy Cognitive Cloud Launcher - Streamlit App
 Developed for Xavier Honablue M.Ed.
 """
 
-def generate_launcher_html():
-    """Generate the HTML content for the Philosophy Cognitive Cloud launcher page."""
-    
-    html_content = """<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Philosophy Cognitive Cloud - Xavier Honablue M.Ed.</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #667eea 100%);
-            min-height: 100vh;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        .background-pattern {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.1;
-            background-image: radial-gradient(circle at 25% 25%, #ffffff 2px, transparent 2px);
-            background-size: 50px 50px;
-            pointer-events: none;
-        }
-
-        .container {
-            position: relative;
-            z-index: 1;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .main-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 25px;
-            padding: 3rem;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-            max-width: 1000px;
-            width: 100%;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .main-title {
-            font-size: 3rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #1e3c72, #2a5298, #667eea);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .subtitle {
-            font-size: 1.4rem;
-            color: #666;
-            margin-bottom: 1rem;
-            font-weight: 300;
-        }
-
-        .developer-credit {
-            font-size: 1.1rem;
-            color: #888;
-            font-style: italic;
-            font-weight: 500;
-        }
-
-        .description {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 3rem;
-            line-height: 1.7;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .activities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .activity-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
-            padding: 2.5rem;
-            text-decoration: none;
-            color: white;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .activity-card.phl101 {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .activity-card.phl202 {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-
-        .activity-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.1);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .activity-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-        }
-
-        .activity-card:hover::before {
-            opacity: 1;
-        }
-
-        .activity-number {
-            font-size: 1.1rem;
-            font-weight: 600;
-            opacity: 0.9;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .activity-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-            line-height: 1.3;
-        }
-
-        .activity-description {
-            font-size: 1rem;
-            opacity: 0.95;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .launch-button {
-            display: inline-flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            text-decoration: none;
-            color: white;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .launch-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateX(5px);
-        }
-
-        .launch-button::after {
-            content: '→';
-            margin-left: 0.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .launch-button:hover::after {
-            transform: translateX(3px);
-        }
-
-        .features-section {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .features-title {
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #444;
-            margin-bottom: 2rem;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .feature-item {
-            text-align: center;
-            padding: 1.5rem;
-            background: rgba(102, 126, 234, 0.05);
-            border-radius: 15px;
-            border: 1px solid rgba(102, 126, 234, 0.1);
-        }
-
-        .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #444;
-            margin-bottom: 0.5rem;
-        }
-
-        .feature-description {
-            font-size: 0.95rem;
-            color: #666;
-            line-height: 1.4;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            color: #888;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .main-card {
-                padding: 2rem;
-                margin: 1rem;
-            }
-            
-            .main-title {
-                font-size: 2.2rem;
-            }
-            
-            .activities-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .activity-card {
-                padding: 2rem;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="background-pattern"></div>
-    
-    <div class="container">
-        <div class="main-card">
-            <div class="header">
-                <h1 class="main-title">Philosophy Cognitive Cloud</h1>
-                <p class="subtitle">Interactive Philosophy Education Platform</p>
-                <p class="developer-credit">Developed by Xavier Honablue, M.Ed.</p>
-            </div>
-
-            <div class="description">
-                Welcome to an innovative approach to philosophical learning. Our cognitive cloud platform combines traditional philosophical inquiry with modern interactive technology to create engaging, thought-provoking educational experiences.
-            </div>
-
-            <div class="activities-grid">
-                <a href="https://philosophy-101-day1.streamlit.app/" class="activity-card phl101" target="_blank">
-                    <div class="activity-number">PHL 101</div>
-                    <h2 class="activity-title">What is Religion? What is Philosophy?</h2>
-                    <p class="activity-description">
-                        Explore fundamental questions about the nature of philosophy and religion. This interactive activity examines the foundations of philosophical thinking and the relationship between faith and reason.
-                    </p>
-                    <div class="launch-button">Launch Activity</div>
-                </a>
-
-                <a href="https://logic1-phl202.streamlit.app/" class="activity-card phl202" target="_blank">
-                    <div class="activity-number">PHL 202</div>
-                    <h2 class="activity-title">Logic & Cognitive Analysis</h2>
-                    <p class="activity-description">
-                        Dive deep into logical reasoning, critical thinking, and cognitive processes. This advanced activity uses interactive tools to help students master formal and informal logic principles.
-                    </p>
-                    <div class="launch-button">Launch Activity</div>
-                </a>
-            </div>
-
-            <div class="features-section">
-                <h3 class="features-title">Platform Features</h3>
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <div class="feature-icon">🎯</div>
-                        <h4 class="feature-title">Interactive Learning</h4>
-                        <p class="feature-description">Engage with philosophical concepts through dynamic, hands-on exercises and simulations</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">🧠</div>
-                        <h4 class="feature-title">Cognitive Enhancement</h4>
-                        <p class="feature-description">Develop critical thinking skills through structured philosophical analysis</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">🌐</div>
-                        <h4 class="feature-title">Cloud-Based Access</h4>
-                        <p class="feature-description">Learn anywhere, anytime with our accessible web-based platform</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">📚</div>
-                        <h4 class="feature-title">Comprehensive Curriculum</h4>
-                        <p class="feature-description">From introductory concepts to advanced logical analysis</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer">
-                <p>&copy; 2025 Philosophy Cognitive Cloud | Xavier Honablue, M.Ed. | Educational Innovation in Philosophy</p>
-            </div>
-        </div>
-    </div>
-</body>
-</html>"""
-    
-    return html_content
-
-def save_launcher_page(filename="philosophy_launcher.html"):
-    """Save the launcher page to an HTML file."""
-    html_content = generate_launcher_html()
-    
-    try:
-        with open(filename, 'w', encoding='utf-8') as f:
-            f.write(html_content)
-        print(f"✅ Launcher page saved successfully as '{filename}'")
-        print(f"🚀 Open the file in your web browser to view the launcher")
-        return True
-    except Exception as e:
-        print(f"❌ Error saving file: {e}")
-        return False
-
-def add_activity(activity_data):
-    """
-    Add a new activity to the launcher.
-    
-    Args:
-        activity_data (dict): Dictionary containing:
-            - 'code': Activity code (e.g., 'PHL301')
-            - 'title': Activity title
-            - 'description': Activity description
-            - 'url': Streamlit app URL
-            - 'gradient': CSS gradient colors (optional)
-    """
-    # This function can be extended to dynamically add new activities
-    # For now, it serves as a template for future expansion
-    pass
+import streamlit as st
 
 def main():
-    """Main function to generate and save the launcher page."""
-    print("🎓 Philosophy Cognitive Cloud Launcher Generator")
-    print("=" * 50)
-    print("Developed for Xavier Honablue M.Ed.")
-    print()
+    # Page configuration
+    st.set_page_config(
+        page_title="Philosophy Cognitive Cloud - Xavier Honablue M.Ed.",
+        page_icon="🧠",
+        layout="wide",
+        initial_sidebar_state="collapsed"
+    )
+
+    # Custom CSS for styling
+    st.markdown("""
+    <style>
+    .main {
+        padding-top: 2rem;
+    }
     
-    # Generate and save the launcher page
-    success = save_launcher_page()
+    .stApp {
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #667eea 100%);
+    }
     
-    if success:
-        print()
-        print("📋 Current Activities:")
-        print("• PHL 101: What is Religion? What is Philosophy?")
-        print("• PHL 202: Logic & Cognitive Analysis")
-        print()
-        print("🔧 To customize:")
-        print("• Edit the HTML content in generate_launcher_html()")
-        print("• Modify URLs, titles, or descriptions as needed")
-        print("• Add new activities using the activity template")
+    .main-header {
+        text-align: center;
+        padding: 2rem 0;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .main-title {
+        font-size: 3rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #1e3c72, #2a5298, #667eea);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.4rem;
+        color: #666;
+        margin-bottom: 1rem;
+    }
+    
+    .developer-credit {
+        font-size: 1.1rem;
+        color: #888;
+        font-style: italic;
+    }
+    
+    .activity-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 2rem;
+        border-radius: 15px;
+        margin: 1rem 0;
+        color: white;
+        text-align: center;
+    }
+    
+    .activity-card.phl101 {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+    
+    .activity-card.phl202 {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+    
+    .activity-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+    
+    .activity-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        opacity: 0.95;
+    }
+    
+    .stButton > button {
+        background: rgba(255, 255, 255, 0.2) !important;
+        color: white !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        border-radius: 25px !important;
+        padding: 0.8rem 2rem !important;
+        font-weight: 600 !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .stButton > button:hover {
+        background: rgba(255, 255, 255, 0.3) !important;
+        transform: translateY(-2px) !important;
+    }
+    
+    .features-section {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 2rem;
+        border-radius: 20px;
+        margin-top: 2rem;
+    }
+    
+    .feature-item {
+        text-align: center;
+        padding: 1.5rem;
+        background: rgba(102, 126, 234, 0.05);
+        border-radius: 15px;
+        margin: 1rem;
+        border: 1px solid rgba(102, 126, 234, 0.1);
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+    # Main header
+    st.markdown("""
+    <div class="main-header">
+        <h1 class="main-title">Philosophy Cognitive Cloud</h1>
+        <p class="subtitle">Interactive Philosophy Education Platform</p>
+        <p class="developer-credit">Developed by Xavier Honablue, M.Ed.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Description
+    st.markdown("""
+    <div style="text-align: center; font-size: 1.2rem; color: white; margin-bottom: 3rem; 
+                background: rgba(255, 255, 255, 0.1); padding: 2rem; border-radius: 15px;">
+        Welcome to an innovative approach to philosophical learning. Our cognitive cloud platform 
+        combines traditional philosophical inquiry with modern interactive technology to create 
+        engaging, thought-provoking educational experiences.
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Activities section
+    st.markdown("## 🎯 Available Activities")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("""
+        <div class="activity-card phl101">
+            <div style="font-size: 1.1rem; font-weight: 600; opacity: 0.9; margin-bottom: 0.5rem;">PHL 101</div>
+            <h2 class="activity-title">What is Religion? What is Philosophy?</h2>
+            <p class="activity-description">
+                Explore fundamental questions about the nature of philosophy and religion. 
+                This interactive activity examines the foundations of philosophical thinking 
+                and the relationship between faith and reason.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        if st.button("🚀 Launch PHL 101 Activity", key="phl101"):
+            st.markdown("""
+            <script>
+            window.open('https://philosophy-101-day1.streamlit.app/', '_blank');
+            </script>
+            """, unsafe_allow_html=True)
+            st.success("Opening PHL 101: What is Religion? What is Philosophy?")
+            st.markdown("[Click here if the page doesn't open automatically](https://philosophy-101-day1.streamlit.app/)")
+    
+    with col2:
+        st.markdown("""
+        <div class="activity-card phl202">
+            <div style="font-size: 1.1rem; font-weight: 600; opacity: 0.9; margin-bottom: 0.5rem;">PHL 202</div>
+            <h2 class="activity-title">Logic & Cognitive Analysis</h2>
+            <p class="activity-description">
+                Dive deep into logical reasoning, critical thinking, and cognitive processes. 
+                This advanced activity uses interactive tools to help students master 
+                formal and informal logic principles.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        if st.button("🚀 Launch PHL 202 Activity", key="phl202"):
+            st.markdown("""
+            <script>
+            window.open('https://logic1-phl202.streamlit.app/', '_blank');
+            </script>
+            """, unsafe_allow_html=True)
+            st.success("Opening PHL 202: Logic & Cognitive Analysis")
+            st.markdown("[Click here if the page doesn't open automatically](https://logic1-phl202.streamlit.app/)")
+
+    # Features section
+    st.markdown("""
+    <div class="features-section">
+        <h3 style="text-align: center; font-size: 1.5rem; margin-bottom: 2rem; color: #444;">Platform Features</h3>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    feat_col1, feat_col2, feat_col3, feat_col4 = st.columns(4)
+    
+    with feat_col1:
+        st.markdown("""
+        <div class="feature-item">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🎯</div>
+            <h4 style="color: #444; margin-bottom: 0.5rem;">Interactive Learning</h4>
+            <p style="color: #666; font-size: 0.9rem;">Engage with philosophical concepts through dynamic exercises</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with feat_col2:
+        st.markdown("""
+        <div class="feature-item">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🧠</div>
+            <h4 style="color: #444; margin-bottom: 0.5rem;">Cognitive Enhancement</h4>
+            <p style="color: #666; font-size: 0.9rem;">Develop critical thinking through structured analysis</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with feat_col3:
+        st.markdown("""
+        <div class="feature-item">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🌐</div>
+            <h4 style="color: #444; margin-bottom: 0.5rem;">Cloud-Based Access</h4>
+            <p style="color: #666; font-size: 0.9rem;">Learn anywhere, anytime with web-based platform</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with feat_col4:
+        st.markdown("""
+        <div class="feature-item">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">📚</div>
+            <h4 style="color: #444; margin-bottom: 0.5rem;">Comprehensive Curriculum</h4>
+            <p style="color: #666; font-size: 0.9rem;">From introductory concepts to advanced logic</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    # Footer
+    st.markdown("""
+    <div style="text-align: center; margin-top: 3rem; padding: 2rem; 
+                background: rgba(255, 255, 255, 0.1); border-radius: 15px; color: white;">
+        <p>&copy; 2025 Philosophy Cognitive Cloud | Xavier Honablue, M.Ed. | Educational Innovation in Philosophy</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
