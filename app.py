@@ -252,7 +252,7 @@ def main():
         </div>
         """, unsafe_allow_html=True)
         
-        st.markdown('<div class="phl202-btn">', unsafe_container_width=True)
+        st.markdown('<div class="phl202-btn">', unsafe_allow_html=True)
         st.link_button("Launch App", "https://logic1-phl202.streamlit.app/", use_container_width=True)
         st.markdown('</div>', unsafe_allow_html=True)
 
