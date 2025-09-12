@@ -298,7 +298,7 @@ def main():
                 <h4 class="lesson-title">What is Philosophy?</h4>
                 <p class="lesson-type">Tuesday • Interactive Exploration</p>
             </a>
-            <a href="https://philosophy-101-day1.streamlit.app/" target="_blank" class="lesson-card active">
+            <a href="https://phl201-branches.streamlit.app/" target="_blank" class="lesson-card active">
                 <div class="lesson-icon">🌳</div>
                 <h4 class="lesson-title">Three Branches of Philosophy</h4>
                 <p class="lesson-type">Thursday • Conceptual Framework</p>
