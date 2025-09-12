@@ -1,6 +1,6 @@
 """
-CognitiveCloud.ai PHL 202 Course Launcher
-3 Credit Hours • 39 Contact Hours • Xavier Honablue M.Ed.
+PHL 201 Introduction to Philosophy - CognitiveCloud.ai Launcher
+Wayne County Community College District • Xavier Honablue, M.Ed.
 """
 
 import streamlit as st
@@ -8,7 +8,7 @@ import streamlit as st
 def main():
     # Page configuration
     st.set_page_config(
-        page_title="PHL 202 - Logic & Philosophy",
+        page_title="PHL 201 - Introduction to Philosophy",
         page_icon="🧠",
         layout="wide",
         initial_sidebar_state="collapsed"
@@ -26,44 +26,81 @@ def main():
     
     .main-header {
         text-align: center;
-        padding: 2rem 0 3rem 0;
+        padding: 2rem 0 2rem 0;
         background: white;
         margin-bottom: 2rem;
         border-bottom: 3px solid #e91e63;
     }
     
     .course-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
         font-weight: 700;
         color: #2d3748;
+        margin-bottom: 0.3rem;
+    }
+    
+    .college-info {
+        font-size: 1rem;
+        color: #718096;
+        font-weight: 500;
         margin-bottom: 0.5rem;
     }
     
-    .brand-emoji {
-        color: #e91e63;
-        margin-right: 0.5rem;
-    }
-    
-    .course-info {
-        font-size: 1rem;
-        color: #718096;
-        font-weight: 400;
+    .instructor-info {
+        font-size: 0.9rem;
+        color: #4a5568;
         margin-bottom: 1rem;
     }
     
-    .credit-info {
-        font-size: 0.9rem;
+    .course-details {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+    }
+    
+    .detail-badge {
+        font-size: 0.8rem;
         color: #e91e63;
         font-weight: 600;
         background: #fdf2f8;
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        display: inline-block;
-        margin: 0.5rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 16px;
+        border: 1px solid #f3e8ff;
+    }
+    
+    .progress-summary {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        border-left: 4px solid #e91e63;
+    }
+    
+    .progress-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #e91e63;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+        color: #4a5568;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
     }
     
     .week-section {
-        margin: 2rem 1rem;
+        margin: 1.5rem 1rem;
         background: white;
         border-radius: 12px;
         padding: 1.5rem;
@@ -72,7 +109,7 @@ def main():
     }
     
     .week-title {
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-weight: 600;
         color: #2d3748;
         margin-bottom: 1rem;
@@ -92,125 +129,114 @@ def main():
         align-items: center;
         justify-content: center;
         margin-right: 0.8rem;
+        flex-shrink: 0;
     }
     
-    .activity-grid {
+    .lesson-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 1rem;
+        margin-bottom: 1rem;
     }
     
-    .activity-card {
+    .lesson-card {
         background: #f7fafc;
         border: 1px solid #e2e8f0;
         border-radius: 8px;
         padding: 1rem;
-        text-align: center;
+        text-decoration: none;
+        color: inherit;
         transition: all 0.2s ease;
         cursor: pointer;
+        display: block;
     }
     
-    .activity-card:hover {
+    .lesson-card:hover {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         transform: translateY(-2px);
+        text-decoration: none;
+        color: inherit;
     }
     
-    .activity-card.active {
+    .lesson-card.active {
         border-color: #68d391;
         background: linear-gradient(135deg, #f0fff4 0%, #f7fafc 100%);
     }
     
-    .activity-card.coming-soon {
+    .lesson-card.coming-soon {
         opacity: 0.6;
+        cursor: not-allowed;
     }
     
-    .activity-icon {
+    .lesson-icon {
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
+        text-align: center;
     }
     
-    .active .activity-icon {
+    .active .lesson-icon {
         color: #38a169;
     }
     
-    .coming-soon .activity-icon {
+    .coming-soon .lesson-icon {
         color: #a0aec0;
     }
     
-    .activity-title {
-        font-size: 0.9rem;
+    .lesson-title {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #2d3748;
+        margin-bottom: 0.3rem;
+        text-align: center;
+        line-height: 1.2;
+    }
+    
+    .lesson-type {
+        font-size: 0.7rem;
+        color: #718096;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+    
+    .assignment-info {
+        background: #edf2f7;
+        border-radius: 6px;
+        padding: 0.8rem;
+        margin-top: 1rem;
+        border-left: 3px solid #4299e1;
+    }
+    
+    .assignment-title {
+        font-size: 0.8rem;
         font-weight: 600;
         color: #2d3748;
         margin-bottom: 0.3rem;
     }
     
-    .activity-duration {
-        font-size: 0.7rem;
-        color: #718096;
-        margin-bottom: 0.8rem;
-    }
-    
-    .stButton > button {
-        width: 100% !important;
-        border: none !important;
-        outline: none !important;
-        box-shadow: none !important;
-        padding: 0.4rem 1rem !important;
-        border-radius: 16px !important;
-        font-size: 0.8rem !important;
-        font-weight: 500 !important;
-        transition: all 0.2s ease !important;
-        font-family: 'Inter', sans-serif !important;
-        background: #38a169 !important;
-        color: white !important;
-    }
-    
-    .stButton > button:hover {
-        background: #2f855a !important;
-    }
-    
-    .coming-soon-btn {
-        width: 100%;
-        padding: 0.4rem 1rem;
-        border-radius: 16px;
-        font-size: 0.8rem;
-        font-weight: 500;
-        background: #e2e8f0;
+    .assignment-desc {
+        font-size: 0.75rem;
         color: #4a5568;
-        border: none;
-        cursor: not-allowed;
+        line-height: 1.3;
     }
     
-    .progress-summary {
-        background: white;
-        border-radius: 12px;
-        padding: 1.5rem;
-        margin: 1rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        border: 1px solid #e2e8f0;
+    .exam-week {
+        background: linear-gradient(135deg, #fed7e2 0%, #fbb6ce 100%);
+        border-left: 4px solid #e91e63;
     }
     
-    .progress-stats {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 1rem;
-        text-align: center;
-    }
-    
-    .stat-number {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #e91e63;
-    }
-    
-    .stat-label {
-        font-size: 0.8rem;
-        color: #4a5568;
+    .exam-card {
+        background: linear-gradient(135deg, #fed7e2 0%, #fbb6ce 100%);
+        border-color: #e91e63;
     }
     
     @media (max-width: 768px) {
-        .activity-grid {
+        .lesson-grid {
             grid-template-columns: 1fr;
+        }
+        
+        .course-details {
+            flex-direction: column;
+            align-items: center;
         }
         
         .course-title {
@@ -223,13 +249,15 @@ def main():
     # Course Header
     st.markdown("""
     <div class="main-header">
-        <h1 class="course-title">
-            <span class="brand-emoji">🧠</span>PHL 202: Logic & Philosophy
-        </h1>
-        <p class="course-info">Interactive Philosophy Course • Xavier Honablue, M.Ed.</p>
-        <div class="credit-info">3 Credit Hours</div>
-        <div class="credit-info">39 Contact Hours</div>
-        <div class="credit-info">13 Weeks</div>
+        <h1 class="course-title">🧠 PHL 201: Introduction to Philosophy</h1>
+        <p class="college-info">Wayne County Community College District</p>
+        <p class="instructor-info">Instructor: Xavier Honablue, M.Ed. | Room 204 | honablue@umich.edu</p>
+        <div class="course-details">
+            <div class="detail-badge">3 Credit Hours</div>
+            <div class="detail-badge">45 Contact Hours</div>
+            <div class="detail-badge">16 Weeks</div>
+            <div class="detail-badge">Tue/Thu 11:00 AM-12:44 PM</div>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -239,15 +267,15 @@ def main():
         <div class="progress-stats">
             <div>
                 <div class="stat-number">2</div>
-                <div class="stat-label">Active Modules</div>
+                <div class="stat-label">Active Lessons</div>
             </div>
             <div>
-                <div class="stat-number">24</div>
+                <div class="stat-number">30</div>
                 <div class="stat-label">Coming Soon</div>
             </div>
             <div>
-                <div class="stat-number">26</div>
-                <div class="stat-label">Total Activities</div>
+                <div class="stat-number">13</div>
+                <div class="stat-label">Assignments</div>
             </div>
             <div>
                 <div class="stat-number">6</div>
@@ -257,100 +285,197 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Week 1: Introduction to Philosophy
+    # Week 1: Course Introduction
     st.markdown("""
     <div class="week-section">
         <div class="week-title">
             <div class="week-number">1</div>
-            Week 1: Introduction to Philosophy (3 hours)
+            Week 1: Course Introduction
         </div>
-        <div class="activity-grid">
-            <div class="activity-card active">
-                <div class="activity-icon">🤔</div>
-                <h4 class="activity-title">What is Philosophy?</h4>
-                <p class="activity-duration">90 minutes</p>
-            </div>
-            <div class="activity-card active">
-                <div class="activity-icon">⛪</div>
-                <h4 class="activity-title">Philosophy vs Religion</h4>
-                <p class="activity-duration">90 minutes</p>
-            </div>
+        <div class="lesson-grid">
+            <a href="https://philosophy-101-day1.streamlit.app/" target="_blank" class="lesson-card active">
+                <div class="lesson-icon">🤔</div>
+                <h4 class="lesson-title">What is Philosophy?</h4>
+                <p class="lesson-type">Tuesday • Interactive Exploration</p>
+            </a>
+            <a href="https://philosophy-101-day1.streamlit.app/" target="_blank" class="lesson-card active">
+                <div class="lesson-icon">🌳</div>
+                <h4 class="lesson-title">Three Branches of Philosophy</h4>
+                <p class="lesson-type">Thursday • Conceptual Framework</p>
+            </a>
+        </div>
+        <div class="assignment-info">
+            <div class="assignment-title">Welcome Activity</div>
+            <div class="assignment-desc">Full credit for all students - Course introduction and expectations</div>
         </div>
     </div>
     """, unsafe_allow_html=True)
-    
-    col1, col2 = st.columns(2)
-    with col1:
-        st.link_button("Launch: What is Philosophy?", "https://philosophy-101-day1.streamlit.app/", use_container_width=True)
-    with col2:
-        st.link_button("Launch: Philosophy vs Religion", "https://philosophy-101-day1.streamlit.app/", use_container_width=True)
 
-    # Week 2: Logic Fundamentals
+    # Week 2: Ancient Philosophy
     st.markdown("""
     <div class="week-section">
         <div class="week-title">
             <div class="week-number">2</div>
-            Week 2: Logic Fundamentals (3 hours)
+            Week 2: Ancient Philosophy
         </div>
-        <div class="activity-grid">
-            <div class="activity-card active">
-                <div class="activity-icon">🧩</div>
-                <h4 class="activity-title">Formal Logic</h4>
-                <p class="activity-duration">90 minutes</p>
+        <div class="lesson-grid">
+            <div class="lesson-card coming-soon">
+                <div class="lesson-icon">🏛️</div>
+                <h4 class="lesson-title">Introduction to Ancient Philosophy</h4>
+                <p class="lesson-type">Tuesday • Historical Context</p>
             </div>
-            <div class="activity-card active">
-                <div class="activity-icon">🎯</div>
-                <h4 class="activity-title">Cognitive Analysis</h4>
-                <p class="activity-duration">90 minutes</p>
+            <div class="lesson-card coming-soon">
+                <div class="lesson-icon">💡</div>
+                <h4 class="lesson-title">Plato's Theory of Forms</h4>
+                <p class="lesson-type">Thursday • Metaphysics</p>
             </div>
+        </div>
+        <div class="assignment-info">
+            <div class="assignment-title">Assignment 1: Plato's Cave Video Reflection (4.6%)</div>
+            <div class="assignment-desc">300-400 word reflection on Plato's Allegory of the Cave - Due Thursday</div>
         </div>
     </div>
     """, unsafe_allow_html=True)
-    
-    col3, col4 = st.columns(2)
-    with col3:
-        st.link_button("Launch: Formal Logic", "https://logic1-phl202.streamlit.app/", use_container_width=True)
-    with col4:
-        st.link_button("Launch: Cognitive Analysis", "https://logic1-phl202.streamlit.app/", use_container_width=True)
 
-    # Weeks 3-13 (Coming Soon)
-    weeks_data = [
-        {"week": 3, "title": "Arguments & Reasoning", "activities": ["Valid Arguments", "Logical Fallacies"]},
-        {"week": 4, "title": "Critical Thinking", "activities": ["Assumption Analysis", "Evidence Evaluation"]},
-        {"week": 5, "title": "Ethics Introduction", "activities": ["Moral Theory", "Ethical Dilemmas"]},
-        {"week": 6, "title": "Metaphysics", "activities": ["Reality & Existence", "Free Will vs Determinism"]},
-        {"week": 7, "title": "Epistemology", "activities": ["Knowledge & Belief", "Sources of Knowledge"]},
-        {"week": 8, "title": "Philosophy of Mind", "activities": ["Consciousness", "Mind-Body Problem"]},
-        {"week": 9, "title": "Political Philosophy", "activities": ["Justice & Rights", "Government & Authority"]},
-        {"week": 10, "title": "Aesthetics", "activities": ["Philosophy of Art", "Beauty & Taste"]},
-        {"week": 11, "title": "Philosophy of Science", "activities": ["Scientific Method", "Explanation & Causation"]},
-        {"week": 12, "title": "Applied Philosophy", "activities": ["Business Ethics", "Environmental Ethics"]},
-        {"week": 13, "title": "Integration & Review", "activities": ["Synthesis Project", "Final Reflection"]}
-    ]
-
-    for week_data in weeks_data:
-        st.markdown(f"""
-        <div class="week-section">
-            <div class="week-title">
-                <div class="week-number">{week_data['week']}</div>
-                Week {week_data['week']}: {week_data['title']} (3 hours)
+    # Week 3: Revision & Aristotle
+    st.markdown("""
+    <div class="week-section">
+        <div class="week-title">
+            <div class="week-number">3</div>
+            Week 3: Revision & Aristotelian Philosophy
+        </div>
+        <div class="lesson-grid">
+            <div class="lesson-card coming-soon">
+                <div class="lesson-icon">✏️</div>
+                <h4 class="lesson-title">Revision Workshop</h4>
+                <p class="lesson-type">Tuesday • Writing Improvement</p>
             </div>
-            <div class="activity-grid">
-                <div class="activity-card coming-soon">
-                    <div class="activity-icon">📚</div>
-                    <h4 class="activity-title">{week_data['activities'][0]}</h4>
-                    <p class="activity-duration">90 minutes</p>
-                    <button class="coming-soon-btn">Coming Soon</button>
-                </div>
-                <div class="activity-card coming-soon">
-                    <div class="activity-icon">💭</div>
-                    <h4 class="activity-title">{week_data['activities'][1]}</h4>
-                    <p class="activity-duration">90 minutes</p>
-                    <button class="coming-soon-btn">Coming Soon</button>
-                </div>
+            <div class="lesson-card coming-soon">
+                <div class="lesson-icon">🎯</div>
+                <h4 class="lesson-title">Aristotle's Philosophy</h4>
+                <p class="lesson-type">Thursday • Virtue Ethics</p>
             </div>
         </div>
+        <div class="assignment-info">
+            <div class="assignment-title">Assignment 2: Rewritten Video Reflection (4.6%)</div>
+            <div class="assignment-desc">Revised reflection using feedback - Due Tuesday</div>
+        </div>
+        <div class="assignment-info">
+            <div class="assignment-title">Assignment 3: Aristotelian Ethics Reading Response (4.6%)</div>
+            <div class="assignment-desc">350-400 word analysis of virtue ethics - Due Thursday</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Continue with remaining weeks...
+    weeks_data = [
+        {
+            "week": 4, "title": "Medieval Philosophy", 
+            "lessons": [("Medieval Philosophy - Augustine & Aquinas", "🏰", "Tuesday"), ("Eastern Philosophy Introduction", "🕉️", "Thursday")],
+            "assignment": "Assignment 4: Comparative Philosophy Journal Entry (4.6%)"
+        },
+        {
+            "week": 5, "title": "Eastern Philosophy", 
+            "lessons": [("Buddhist Philosophy", "☸️", "Tuesday"), ("Confucian Thought", "📜", "Thursday")],
+            "assignment": "Assignment 5: Eastern Philosophy Reflection Paper (4.6%)"
+        },
+        {
+            "week": 6, "title": "African & Indigenous Philosophy", 
+            "lessons": [("African Philosophy Traditions", "🌍", "Tuesday"), ("Indigenous Philosophical Perspectives", "🪶", "Thursday")],
+            "assignment": "Assignment 6: Cultural Philosophy Comparison Chart (4.6%)"
+        },
+        {
+            "week": 7, "title": "Modern Philosophy", 
+            "lessons": [("Descartes & Rationalism", "🧠", "Tuesday"), ("Empiricism - Locke & Hume", "👁️", "Thursday")],
+            "assignment": "Assignment 7: Rationalism vs. Empiricism Debate Preparation (4.6%)"
+        },
+        {
+            "week": 8, "title": "Midterm Week", 
+            "lessons": [("Midterm Review", "📚", "Tuesday"), ("MIDTERM EXAM", "📝", "Thursday")],
+            "assignment": "Midterm Examination (20%)",
+            "exam": True
+        },
+        {
+            "week": 9, "title": "Kant & Utilitarianism", 
+            "lessons": [("Kant's Critical Philosophy", "⚖️", "Tuesday"), ("Ethics - Utilitarianism", "🎯", "Thursday")],
+            "assignment": "Assignment 8: Ethical Theory Application Exercise (4.6%)"
+        },
+        {
+            "week": 10, "title": "Ethical Theories", 
+            "lessons": [("Deontological Ethics", "📋", "Tuesday"), ("Virtue Ethics", "🌟", "Thursday")],
+            "assignment": "Assignment 9: Personal Ethics Philosophy Paper (4.6%)"
+        },
+        {
+            "week": 11, "title": "Political Philosophy", 
+            "lessons": [("Social Contract Theory", "🤝", "Tuesday"), ("Justice and Rights", "⚖️", "Thursday")],
+            "assignment": "Assignment 10: Political Philosophy Case Study Analysis (4.6%)"
+        },
+        {
+            "week": 12, "title": "Philosophy of Science", 
+            "lessons": [("Philosophy of Science", "🔬", "Tuesday"), ("Thanksgiving Break", "🦃", "Thursday")],
+            "assignment": "Assignment 11: Science and Philosophy Reflection (4.6%)"
+        },
+        {
+            "week": 13, "title": "Existentialism", 
+            "lessons": [("Existentialism", "🎭", "Tuesday"), ("Phenomenology and Consciousness", "🧘", "Thursday")],
+            "assignment": "Assignment 12: Existentialist Life Reflection (4.6%)"
+        },
+        {
+            "week": 14, "title": "Contemporary Philosophy", 
+            "lessons": [("Contemporary Philosophy Issues", "🌐", "Tuesday"), ("Student Philosopher Presentations", "🎤", "Thursday")],
+            "assignment": "Assignment 13: Philosopher Research Presentation (4.8%)"
+        },
+        {
+            "week": 15, "title": "Philosophy & Technology", 
+            "lessons": [("Philosophy and Technology", "💻", "Tuesday"), ("Final Review Session", "📖", "Thursday")],
+            "assignment": "Final Exam Preparation"
+        },
+        {
+            "week": 16, "title": "Final Examination", 
+            "lessons": [("FINAL EXAM", "📝", "Tuesday")],
+            "assignment": "Final Examination (20%)",
+            "exam": True
+        }
+    ]
+
+    for week_info in weeks_data:
+        section_class = "week-section exam-week" if week_info.get("exam") else "week-section"
+        st.markdown(f"""
+        <div class="{section_class}">
+            <div class="week-title">
+                <div class="week-number">{week_info['week']}</div>
+                Week {week_info['week']}: {week_info['title']}
+            </div>
+            <div class="lesson-grid">
         """, unsafe_allow_html=True)
+        
+        for lesson_title, icon, day in week_info["lessons"]:
+            card_class = "lesson-card exam-card" if week_info.get("exam") else "lesson-card coming-soon"
+            st.markdown(f"""
+                <div class="{card_class}">
+                    <div class="lesson-icon">{icon}</div>
+                    <h4 class="lesson-title">{lesson_title}</h4>
+                    <p class="lesson-type">{day}</p>
+                </div>
+            """, unsafe_allow_html=True)
+        
+        st.markdown("""
+            </div>
+            <div class="assignment-info">
+        """, unsafe_allow_html=True)
+        
+        if week_info.get("exam"):
+            st.markdown(f"""
+                <div class="assignment-title">{week_info['assignment']}</div>
+                <div class="assignment-desc">Comprehensive examination covering course materials</div>
+            """, unsafe_allow_html=True)
+        else:
+            st.markdown(f"""
+                <div class="assignment-title">{week_info['assignment']}</div>
+                <div class="assignment-desc">Weekly philosophical writing and reflection assignment</div>
+            """, unsafe_allow_html=True)
+        
+        st.markdown("</div></div>", unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
