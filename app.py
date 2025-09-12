@@ -35,7 +35,7 @@ def main():
     .course-title {
         font-size: 1.8rem;
         font-weight: 700;
-        color: #2d3748;
+        color: #1a202c;
         margin-bottom: 0.3rem;
     }
     
