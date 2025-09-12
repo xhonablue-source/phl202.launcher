@@ -266,11 +266,11 @@ def main():
     <div class="progress-summary">
         <div class="progress-stats">
             <div>
-                <div class="stat-number">4</div>
+                <div class="stat-number">5</div>
                 <div class="stat-label">Active Lessons</div>
             </div>
             <div>
-                <div class="stat-number">28</div>
+                <div class="stat-number">27</div>
                 <div class="stat-label">Coming Soon</div>
             </div>
             <div>
@@ -278,7 +278,7 @@ def main():
                 <div class="stat-label">Assignments</div>
             </div>
             <div>
-                <div class="stat-number">9</div>
+                <div class="stat-number">12</div>
                 <div class="stat-label">Hours Available</div>
             </div>
         </div>
@@ -375,18 +375,60 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
+    # Week 4: Medieval Philosophy
+    st.markdown("""
+    <div class="week-section">
+        <div class="week-title">
+            <div class="week-number">4</div>
+            Week 4: Medieval Philosophy
+        </div>
+        <div class="lesson-grid">
+            <div class="lesson-card coming-soon">
+                <div class="lesson-icon">🏰</div>
+                <h4 class="lesson-title">Medieval Philosophy - Augustine & Aquinas</h4>
+                <p class="lesson-type">Tuesday</p>
+            </div>
+            <div class="lesson-card coming-soon">
+                <div class="lesson-icon">🕉️</div>
+                <h4 class="lesson-title">Eastern Philosophy Introduction</h4>
+                <p class="lesson-type">Thursday</p>
+            </div>
+        </div>
+        <div class="assignment-info">
+            <div class="assignment-title">Assignment 4: Comparative Philosophy Journal Entry (4.6%)</div>
+            <div class="assignment-desc">Weekly philosophical writing and reflection assignment</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Week 5: Eastern Philosophy - ACTIVE
+    st.markdown("""
+    <div class="week-section">
+        <div class="week-title">
+            <div class="week-number">5</div>
+            Week 5: Eastern Philosophy (3 hours)
+        </div>
+        <div class="lesson-grid">
+            <a href="https://phl202-buddhism.streamlit.app/" target="_blank" class="lesson-card active">
+                <div class="lesson-icon">☸️</div>
+                <h4 class="lesson-title">Buddhist Philosophy</h4>
+                <p class="lesson-type">Tuesday • Eastern Wisdom</p>
+            </a>
+            <div class="lesson-card coming-soon">
+                <div class="lesson-icon">📜</div>
+                <h4 class="lesson-title">Confucian Thought</h4>
+                <p class="lesson-type">Thursday • Social Philosophy</p>
+            </div>
+        </div>
+        <div class="assignment-info">
+            <div class="assignment-title">Assignment 5: Eastern Philosophy Reflection Paper (4.6%)</div>
+            <div class="assignment-desc">350-400 word reflection on Buddhist philosophy and its relevance - Due Thursday</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
     # Continue with remaining weeks...
     weeks_data = [
-        {
-            "week": 4, "title": "Medieval Philosophy", 
-            "lessons": [("Medieval Philosophy - Augustine & Aquinas", "🏰", "Tuesday"), ("Eastern Philosophy Introduction", "🕉️", "Thursday")],
-            "assignment": "Assignment 4: Comparative Philosophy Journal Entry (4.6%)"
-        },
-        {
-            "week": 5, "title": "Eastern Philosophy", 
-            "lessons": [("Buddhist Philosophy", "☸️", "Tuesday"), ("Confucian Thought", "📜", "Thursday")],
-            "assignment": "Assignment 5: Eastern Philosophy Reflection Paper (4.6%)"
-        },
         {
             "week": 6, "title": "African & Indigenous Philosophy", 
             "lessons": [("African Philosophy Traditions", "🌍", "Tuesday"), ("Indigenous Philosophical Perspectives", "🪶", "Thursday")],
