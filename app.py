@@ -266,11 +266,11 @@ def main():
     <div class="progress-summary">
         <div class="progress-stats">
             <div>
-                <div class="stat-number">2</div>
+                <div class="stat-number">4</div>
                 <div class="stat-label">Active Lessons</div>
             </div>
             <div>
-                <div class="stat-number">30</div>
+                <div class="stat-number">28</div>
                 <div class="stat-label">Coming Soon</div>
             </div>
             <div>
@@ -278,7 +278,7 @@ def main():
                 <div class="stat-label">Assignments</div>
             </div>
             <div>
-                <div class="stat-number">6</div>
+                <div class="stat-number">9</div>
                 <div class="stat-label">Hours Available</div>
             </div>
         </div>
@@ -308,14 +308,6 @@ def main():
             <div class="assignment-title">Welcome Activity</div>
             <div class="assignment-desc">Full credit for all students - Course introduction and expectations</div>
         </div>
-        <div class="assignment-info" style="background: #e6fffa; border-left: 3px solid #319795;">
-            <a href="https://logic1-phl202.streamlit.app/" target="_blank" style="text-decoration: none; display: block;">
-                <div style="background: #319795; color: white; padding: 0.8rem 1.2rem; border-radius: 8px; text-align: center; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.background='#2c7a7b'" onmouseout="this.style.background='#319795'">
-                    <div style="font-weight: 600; margin-bottom: 0.2rem;">🎮 Optional Logic Exercises (No Grade)</div>
-                    <div style="font-size: 0.85rem; opacity: 0.9;">Logic Games & Exercises - Practice critical thinking skills</div>
-                </div>
-            </a>
-        </div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -342,31 +334,39 @@ def main():
             <div class="assignment-title">Assignment 1: Plato's Cave Video Reflection (4.6%)</div>
             <div class="assignment-desc">300-400 word reflection on Plato's Allegory of the Cave - Due Thursday</div>
         </div>
+        <div class="assignment-info" style="background: #e6fffa; border-left: 3px solid #319795;">
+            <a href="https://logic1-phl202.streamlit.app/" target="_blank" style="text-decoration: none; display: block;">
+                <div style="background: #319795; color: white; padding: 0.8rem 1.2rem; border-radius: 8px; text-align: center; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.background='#2c7a7b'" onmouseout="this.style.background='#319795'">
+                    <div style="font-weight: 600; margin-bottom: 0.2rem;">🎮 Optional Logic Exercises (No Grade)</div>
+                    <div style="font-size: 0.85rem; opacity: 0.9;">Logic Games & Exercises - Practice critical thinking skills</div>
+                </div>
+            </a>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
-    # Week 3: Revision & Aristotle
+    # Week 3: Ancient Philosophy - ACTIVE
     st.markdown("""
     <div class="week-section">
         <div class="week-title">
             <div class="week-number">3</div>
-            Week 3: Revision & Aristotelian Philosophy
+            Week 3: Ancient Philosophy (3 hours)
         </div>
         <div class="lesson-grid">
-            <div class="lesson-card coming-soon">
+            <a href="https://phl201-week3.streamlit.app/" target="_blank" class="lesson-card active">
                 <div class="lesson-icon">✏️</div>
                 <h4 class="lesson-title">Revision Workshop</h4>
                 <p class="lesson-type">Tuesday • Writing Improvement</p>
-            </div>
-            <div class="lesson-card coming-soon">
-                <div class="lesson-icon">🎯</div>
-                <h4 class="lesson-title">Aristotle's Philosophy</h4>
-                <p class="lesson-type">Thursday • Virtue Ethics</p>
-            </div>
+            </a>
+            <a href="https://phl201-week3.streamlit.app/" target="_blank" class="lesson-card active">
+                <div class="lesson-icon">🏛️</div>
+                <h4 class="lesson-title">Plato's Theory of Forms</h4>
+                <p class="lesson-type">Thursday • Ancient Philosophy</p>
+            </a>
         </div>
         <div class="assignment-info">
             <div class="assignment-title">Assignment 2: Rewritten Video Reflection (4.6%)</div>
-            <div class="assignment-desc">Revised reflection using feedback - Due Tuesday</div>
+            <div class="assignment-desc">Revised Cave reflection incorporating Theory of Forms - Due Tuesday</div>
         </div>
         <div class="assignment-info">
             <div class="assignment-title">Assignment 3: Aristotelian Ethics Reading Response (4.6%)</div>
