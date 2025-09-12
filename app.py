@@ -309,12 +309,12 @@ def main():
             <div class="assignment-desc">Full credit for all students - Course introduction and expectations</div>
         </div>
         <div class="assignment-info" style="background: #e6fffa; border-left: 3px solid #319795;">
-            <div class="assignment-title">Optional Logic Exercises (No Grade)</div>
-            <div class="assignment-desc">
-                <a href="https://logic1-phl202.streamlit.app/" target="_blank" style="color: #319795; text-decoration: none; font-weight: 500;">
-                    Logic Games & Exercises - Practice critical thinking skills
-                </a>
-            </div>
+            <a href="https://logic1-phl202.streamlit.app/" target="_blank" style="text-decoration: none; display: block;">
+                <div style="background: #319795; color: white; padding: 0.8rem 1.2rem; border-radius: 8px; text-align: center; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.background='#2c7a7b'" onmouseout="this.style.background='#319795'">
+                    <div style="font-weight: 600; margin-bottom: 0.2rem;">🎮 Optional Logic Exercises (No Grade)</div>
+                    <div style="font-size: 0.85rem; opacity: 0.9;">Logic Games & Exercises - Practice critical thinking skills</div>
+                </div>
+            </a>
         </div>
     </div>
     """, unsafe_allow_html=True)
