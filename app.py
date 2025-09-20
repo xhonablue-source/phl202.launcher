@@ -334,16 +334,16 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Progress Summary
+    # Progress Summary - Updated stats
     st.markdown("""
     <div class="progress-summary">
         <div class="progress-stats">
             <div>
-                <div class="stat-number">6</div>
+                <div class="stat-number">7</div>
                 <div class="stat-label">Active Lessons</div>
             </div>
             <div>
-                <div class="stat-number">26</div>
+                <div class="stat-number">25</div>
                 <div class="stat-label">Coming Soon</div>
             </div>
             <div>
@@ -351,7 +351,7 @@ def main():
                 <div class="stat-label">Assignments</div>
             </div>
             <div>
-                <div class="stat-number">15</div>
+                <div class="stat-number">18</div>
                 <div class="stat-label">Hours Available</div>
             </div>
         </div>
@@ -478,12 +478,12 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Week 4: Medieval Philosophy
+    # Week 4: Medieval Philosophy - UPDATED WITH EPISTEMOLOGY
     st.markdown("""
     <div class="week-section">
         <div class="week-title">
             <div class="week-number">4</div>
-            Week 4: Medieval Philosophy
+            Week 4: Medieval Philosophy & Epistemology (3 hours)
         </div>
         <div class="lesson-grid">
             <div class="lesson-card coming-soon">
@@ -491,15 +491,23 @@ def main():
                 <h4 class="lesson-title">Medieval Philosophy - Augustine & Aquinas</h4>
                 <p class="lesson-type">Tuesday</p>
             </div>
-            <div class="lesson-card coming-soon">
-                <div class="lesson-icon">🕉️</div>
-                <h4 class="lesson-title">Eastern Philosophy Introduction</h4>
-                <p class="lesson-type">Thursday</p>
-            </div>
+            <a href="https://phl201-epistemology.streamlit.app/" target="_blank" class="lesson-card active">
+                <div class="lesson-icon">🔍</div>
+                <h4 class="lesson-title">Epistemology: Theory of Knowledge</h4>
+                <p class="lesson-type">Thursday • Knowledge & Belief</p>
+            </a>
         </div>
         <div class="assignment-info">
             <div class="assignment-title">Assignment 4: Comparative Philosophy Journal Entry (4.6%)</div>
             <div class="assignment-desc">Weekly philosophical writing and reflection assignment</div>
+        </div>
+        <div class="assignment-info" style="background: #f0fff4; border-left: 3px solid #38a169;">
+            <a href="https://phl201-epistemology.streamlit.app/" target="_blank" style="text-decoration: none; display: block;">
+                <div style="background: #38a169; color: white; padding: 0.8rem 1.2rem; border-radius: 8px; text-align: center; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.background='#2f855a'" onmouseout="this.style.background='#38a169'">
+                    <div style="font-weight: 600; margin-bottom: 0.2rem;">🔍 NEW: Epistemology Interactive Module</div>
+                    <div style="font-size: 0.85rem; opacity: 0.9;">Explore knowledge, belief, and skepticism through interactive exercises</div>
+                </div>
+            </a>
         </div>
     </div>
     """, unsafe_allow_html=True)
