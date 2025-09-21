@@ -162,6 +162,16 @@ def main():
         opacity: 0.9;
         line-height: 1.4;
     }
+
+    .featured-section {
+        margin: 2rem 1rem;
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        color: white;
+        text-align: center;
+    }
     
     .week-section {
         margin: 1.5rem 1rem;
@@ -355,6 +365,23 @@ def main():
                 <div class="stat-label">Hours Available</div>
             </div>
         </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Featured Research Paper Section
+    st.markdown("""
+    <div class="featured-section">
+        <div class="special-title">📄 Featured Research Paper</div>
+        <div class="special-subtitle">Xavier Honablue, M.Ed. - Academic Publication</div>
+        <a href="https://xavier-honablue-paper3.streamlit.app/" target="_blank" class="special-card">
+            <div class="special-icon">📚✨</div>
+            <div class="special-card-title">Academic Research: Philosophy in Practice</div>
+            <div class="special-card-desc">
+                Explore cutting-edge philosophical research by your instructor. This academic paper 
+                demonstrates the practical application of philosophical principles in contemporary 
+                educational and intellectual contexts.
+            </div>
+        </a>
     </div>
     """, unsafe_allow_html=True)
 
