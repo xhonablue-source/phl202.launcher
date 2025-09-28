@@ -99,6 +99,24 @@ def main():
         letter-spacing: 0.05em;
     }
 
+    .latest-feature {
+        margin: 2rem 1rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        color: white;
+        text-align: center;
+        border: 3px solid #ffd700;
+        animation: pulse-glow 2s infinite;
+    }
+
+    @keyframes pulse-glow {
+        0% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 0 0 0 rgba(255, 215, 0, 0.7); }
+        50% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 0 20px 10px rgba(255, 215, 0, 0.3); }
+        100% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 0 0 0 rgba(255, 215, 0, 0.7); }
+    }
+
     .special-section {
         margin: 2rem 1rem;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -242,6 +260,16 @@ def main():
         background: linear-gradient(135deg, #faf5ff 0%, #f7fafc 100%);
     }
 
+    .lesson-card.quiz {
+        border-color: #ffd700;
+        background: linear-gradient(135deg, #fffbf0 0%, #f7fafc 100%);
+        border-width: 2px;
+    }
+
+    .quiz .lesson-icon {
+        color: #d69e2e;
+    }
+
     .advanced .lesson-icon {
         color: #805ad5;
     }
@@ -349,11 +377,11 @@ def main():
     <div class="progress-summary">
         <div class="progress-stats">
             <div>
-                <div class="stat-number">7</div>
+                <div class="stat-number">8</div>
                 <div class="stat-label">Active Lessons</div>
             </div>
             <div>
-                <div class="stat-number">25</div>
+                <div class="stat-number">24</div>
                 <div class="stat-label">Coming Soon</div>
             </div>
             <div>
@@ -361,10 +389,27 @@ def main():
                 <div class="stat-label">Assignments</div>
             </div>
             <div>
-                <div class="stat-number">18</div>
+                <div class="stat-number">21</div>
                 <div class="stat-label">Hours Available</div>
             </div>
         </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Latest Feature - Week 4 Quiz
+    st.markdown("""
+    <div class="latest-feature">
+        <div class="special-title">🆕 Latest Feature: Week 4 Philosophy Quiz</div>
+        <div class="special-subtitle">Comprehensive 85-Question Assessment</div>
+        <a href="https://phl201-week4-quiz.streamlit.app/" target="_blank" class="special-card">
+            <div class="special-icon">🧠📝</div>
+            <div class="special-card-title">Week 4: 85-Question Philosophy Quiz</div>
+            <div class="special-card-desc">
+                Test your knowledge of Ancient Philosophy, Human Nature, Darwin's Challenge, and Socratic Method. 
+                Features comprehensive questions based on course readings, immediate feedback, progress tracking, 
+                and category-based performance analysis. Perfect preparation for the midterm examination.
+            </div>
+        </a>
     </div>
     """, unsafe_allow_html=True)
 
@@ -505,7 +550,7 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Week 4: Medieval Philosophy - UPDATED WITH EPISTEMOLOGY
+    # Week 4: Medieval Philosophy - UPDATED WITH QUIZ
     st.markdown("""
     <div class="week-section">
         <div class="week-title">
@@ -523,6 +568,11 @@ def main():
                 <h4 class="lesson-title">Epistemology: Theory of Knowledge</h4>
                 <p class="lesson-type">Thursday • Knowledge & Belief</p>
             </a>
+            <a href="https://phl201-week4-quiz.streamlit.app/" target="_blank" class="lesson-card quiz">
+                <div class="lesson-icon">🧠</div>
+                <h4 class="lesson-title">Week 4: Philosophy Quiz (85 Questions)</h4>
+                <p class="lesson-type">Assessment • Ancient Philosophy & Human Nature</p>
+            </a>
         </div>
         <div class="assignment-info">
             <div class="assignment-title">Assignment 4: Comparative Philosophy Journal Entry (4.6%)</div>
@@ -533,6 +583,14 @@ def main():
                 <div style="background: #38a169; color: white; padding: 0.8rem 1.2rem; border-radius: 8px; text-align: center; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.background='#2f855a'" onmouseout="this.style.background='#38a169'">
                     <div style="font-weight: 600; margin-bottom: 0.2rem;">🔍 NEW: Epistemology Interactive Module</div>
                     <div style="font-size: 0.85rem; opacity: 0.9;">Explore knowledge, belief, and skepticism through interactive exercises</div>
+                </div>
+            </a>
+        </div>
+        <div class="assignment-info" style="background: #fffbf0; border-left: 3px solid #d69e2e;">
+            <a href="https://phl201-week4-quiz.streamlit.app/" target="_blank" style="text-decoration: none; display: block;">
+                <div style="background: #d69e2e; color: white; padding: 0.8rem 1.2rem; border-radius: 8px; text-align: center; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.background='#b7791f'" onmouseout="this.style.background='#d69e2e'">
+                    <div style="font-weight: 600; margin-bottom: 0.2rem;">🧠 NEW: Week 4 Philosophy Quiz (Optional)</div>
+                    <div style="font-size: 0.85rem; opacity: 0.9;">85-question comprehensive quiz - Test your knowledge of ancient philosophy, human nature, and Socratic method</div>
                 </div>
             </a>
         </div>
@@ -602,11 +660,6 @@ def main():
             "week": 12, "title": "Philosophy of Science", 
             "lessons": [("Philosophy of Science", "🔬", "Tuesday"), ("Thanksgiving Break", "🦃", "Thursday")],
             "assignment": "Assignment 11: Science and Philosophy Reflection (4.6%)"
-        },
-        {
-            "week": 13, "title": "Existentialism", 
-            "lessons": [("Existentialism", "🎭", "Tuesday"), ("Phenomenology and Consciousness", "🧘", "Thursday")],
-            "assignment": "Assignment 12: Existentialist Life Reflection (4.6%)"
         },
         {
             "week": 14, "title": "Contemporary Philosophy", 
