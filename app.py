@@ -666,4 +666,3 @@ def main():
             "lessons": [("Philosophy of Language Critique", "🗣️", "Tuesday")],
             "assignment": "Assignment 12: Language & Meaning Analysis Paper (4.6%)",
             "active_links": ["https://phl201-critique.streamlit.app/"]
-    
