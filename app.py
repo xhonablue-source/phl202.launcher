@@ -396,18 +396,18 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Latest Feature - Philosophy of Language Critique
+    # Latest Feature - Gettier Problem Critique
     st.markdown("""
     <div class="latest-feature">
-        <div class="special-title">🆕 Latest Feature: Philosophy of Language Critique</div>
-        <div class="special-subtitle">Advanced Critical Analysis Module</div>
+        <div class="special-title">🆕 Latest Feature: Gettier Problem Critique</div>
+        <div class="special-subtitle">Advanced Epistemology - Critical Analysis</div>
         <a href="https://phl201-critique.streamlit.app/" target="_blank" class="special-card">
-            <div class="special-icon">🗣️📖</div>
-            <div class="special-card-title">Philosophy of Language: Critical Examination</div>
+            <div class="special-icon">🔍📖</div>
+            <div class="special-card-title">Philosophical Critique: Faulty Inference vs Reliable Perception</div>
             <div class="special-card-desc">
-                Explore the deep tensions in philosophy of language through critical analysis of meaning, 
-                reference, and linguistic representation. Examine how language both reveals and obscures 
-                reality, and engage with fundamental questions about communication and understanding.
+                Challenge the Gettier problem's treatment of justified true belief through critical analysis 
+                of the fake barn scenario. Examine whether perception provides knowledge when it accurately 
+                tracks reality, and develop your own philosophical critique using structured argumentation.
             </div>
         </a>
     </div>
@@ -594,6 +594,14 @@ def main():
                 </div>
             </a>
         </div>
+        <div class="assignment-info" style="background: #f0fff4; border-left: 3px solid #38a169;">
+            <a href="https://phl201-critique.streamlit.app/" target="_blank" style="text-decoration: none; display: block;">
+                <div style="background: #38a169; color: white; padding: 0.8rem 1.2rem; border-radius: 8px; text-align: center; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.background='#2f855a'" onmouseout="this.style.background='#38a169'">
+                    <div style="font-weight: 600; margin-bottom: 0.2rem;">🔍 NEW: Gettier Problem Critique</div>
+                    <div style="font-size: 0.85rem; opacity: 0.9;">Advanced epistemology - Challenge JTB through critical analysis of the fake barn scenario</div>
+                </div>
+            </a>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -670,9 +678,9 @@ def main():
         },
         {
             "week": 13,
-            "title": "Philosophy of Language",
-            "lessons": [("Philosophy of Language Critique", "🗣️", "Tuesday"), ("Linguistic Meaning & Communication", "💬", "Thursday")],
-            "assignment": "Assignment 12: Language & Meaning Analysis Paper (4.6%)",
+            "title": "Epistemology - Advanced Topics",
+            "lessons": [("Gettier Problem Critique", "🔍", "Tuesday"), ("Knowledge & Justification", "📖", "Thursday")],
+            "assignment": "Assignment 12: Philosophical Critique Essay (4.6%)",
             "active_links": ["https://phl201-critique.streamlit.app/"]
         },
         {
