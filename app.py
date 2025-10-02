@@ -372,7 +372,7 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Progress Summary - Updated stats
+    # Progress Summary
     st.markdown("""
     <div class="progress-summary">
         <div class="progress-stats">
@@ -521,7 +521,7 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Week 3: Plato's Philosophy - ACTIVE
+    # Week 3: Plato's Philosophy
     st.markdown("""
     <div class="week-section">
         <div class="week-title">
@@ -551,7 +551,7 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Week 4: Medieval Philosophy
+    # Week 4: Medieval Philosophy & Epistemology
     st.markdown("""
     <div class="week-section">
         <div class="week-title">
@@ -614,7 +614,7 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Week 5: Eastern Philosophy - ACTIVE
+    # Week 5: Eastern Philosophy
     st.markdown("""
     <div class="week-section">
         <div class="week-title">
@@ -640,69 +640,12 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Continue with remaining weeks
+    # Remaining weeks
     weeks_data = [
         {
             "week": 6,
             "title": "African & Indigenous Philosophy",
-            "lessons": [("African Philosophy Traditions", "🌍", "Tuesday"), ("Indigenous Philosophical Perspectives", "🪶", "Thursday")    ]
-
-    for week_info in weeks_data:
-        section_class = "week-section exam-week" if week_info.get("exam") else "week-section"
-        st.markdown(f"""
-        <div class="{section_class}">
-            <div class="week-title">
-                <div class="week-number">{week_info['week']}</div>
-                Week {week_info['week']}: {week_info['title']}
-            </div>
-            <div class="lesson-grid">
-        """, unsafe_allow_html=True)
-        
-        active_links = week_info.get("active_links", [])
-        for idx, lesson_data in enumerate(week_info["lessons"]):
-            lesson_title, icon, day = lesson_data
-            
-            if week_info.get("exam"):
-                card_class = "lesson-card exam-card"
-                link_html = f'<div class="{card_class}">'
-                close_tag = "</div>"
-            elif idx < len(active_links):
-                card_class = "lesson-card active"
-                link_html = f'<a href="{active_links[idx]}" target="_blank" class="{card_class}">'
-                close_tag = "</a>"
-            else:
-                card_class = "lesson-card coming-soon"
-                link_html = f'<div class="{card_class}">'
-                close_tag = "</div>"
-            
-            st.markdown(f"""
-                {link_html}
-                    <div class="lesson-icon">{icon}</div>
-                    <h4 class="lesson-title">{lesson_title}</h4>
-                    <p class="lesson-type">{day}</p>
-                {close_tag}
-            """, unsafe_allow_html=True)
-        
-        st.markdown("""
-            </div>
-            <div class="assignment-info">
-        """, unsafe_allow_html=True)
-        
-        if week_info.get("exam"):
-            st.markdown(f"""
-                <div class="assignment-title">{week_info['assignment']}</div>
-                <div class="assignment-desc">Comprehensive examination covering course materials</div>
-            """, unsafe_allow_html=True)
-        else:
-            st.markdown(f"""
-                <div class="assignment-title">{week_info['assignment']}</div>
-                <div class="assignment-desc">Weekly philosophical writing and reflection assignment</div>
-            """, unsafe_allow_html=True)
-        
-        st.markdown("</div></div>", unsafe_allow_html=True)
-
-if __name__ == "__main__":
-    main(),
+            "lessons": [("African Philosophy Traditions", "🌍", "Tuesday"), ("Indigenous Philosophical Perspectives", "🪶", "Thursday")],
             "assignment": "Assignment 6: Cultural Philosophy Comparison Chart (4.6%)"
         },
         {
@@ -768,3 +711,61 @@ if __name__ == "__main__":
             "assignment": "Final Examination (20%)",
             "exam": True
         }
+    ]
+
+    for week_info in weeks_data:
+        section_class = "week-section exam-week" if week_info.get("exam") else "week-section"
+        st.markdown(f"""
+        <div class="{section_class}">
+            <div class="week-title">
+                <div class="week-number">{week_info['week']}</div>
+                Week {week_info['week']}: {week_info['title']}
+            </div>
+            <div class="lesson-grid">
+        """, unsafe_allow_html=True)
+        
+        active_links = week_info.get("active_links", [])
+        for idx, lesson_data in enumerate(week_info["lessons"]):
+            lesson_title, icon, day = lesson_data
+            
+            if week_info.get("exam"):
+                card_class = "lesson-card exam-card"
+                link_html = f'<div class="{card_class}">'
+                close_tag = "</div>"
+            elif idx < len(active_links):
+                card_class = "lesson-card active"
+                link_html = f'<a href="{active_links[idx]}" target="_blank" class="{card_class}">'
+                close_tag = "</a>"
+            else:
+                card_class = "lesson-card coming-soon"
+                link_html = f'<div class="{card_class}">'
+                close_tag = "</div>"
+            
+            st.markdown(f"""
+                {link_html}
+                    <div class="lesson-icon">{icon}</div>
+                    <h4 class="lesson-title">{lesson_title}</h4>
+                    <p class="lesson-type">{day}</p>
+                {close_tag}
+            """, unsafe_allow_html=True)
+        
+        st.markdown("""
+            </div>
+            <div class="assignment-info">
+        """, unsafe_allow_html=True)
+        
+        if week_info.get("exam"):
+            st.markdown(f"""
+                <div class="assignment-title">{week_info['assignment']}</div>
+                <div class="assignment-desc">Comprehensive examination covering course materials</div>
+            """, unsafe_allow_html=True)
+        else:
+            st.markdown(f"""
+                <div class="assignment-title">{week_info['assignment']}</div>
+                <div class="assignment-desc">Weekly philosophical writing and reflection assignment</div>
+            """, unsafe_allow_html=True)
+        
+        st.markdown("</div></div>", unsafe_allow_html=True)
+
+if __name__ == "__main__":
+    main()
