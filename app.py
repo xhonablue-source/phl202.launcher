@@ -1,762 +1,309 @@
-"""
-PHL 201 Introduction to Philosophy - CognitiveCloud.ai Launcher
-Wayne County Community College District • Xavier Honablue, M.Ed.
-"""
-
 import streamlit as st
+import webbrowser
 
-def main():
-    # Page configuration
-    st.set_page_config(
-        page_title="PHL 201 - Introduction to Philosophy",
-        page_icon="🧠",
-        layout="wide",
-        initial_sidebar_state="collapsed"
-    )
+# Page configuration
+st.set_page_config(
+    page_title="PHL201 - Introduction to Philosophy",
+    page_icon="🧠",
+    layout="wide"
+)
 
-    # Custom CSS matching the CognitiveCloud.ai launcher design
-    st.markdown("""
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-    
-    .stApp {
-        background: #f8f9fa;
-        font-family: 'Inter', sans-serif;
-    }
-    
+# Custom CSS
+st.markdown("""
+<style>
     .main-header {
-        text-align: center;
-        padding: 2rem 0 2rem 0;
-        background: white;
+        background: linear-gradient(90deg, #4F46E5 0%, #7C3AED 100%);
+        padding: 3rem 2rem;
+        border-radius: 15px;
+        color: white;
         margin-bottom: 2rem;
-        border-bottom: 3px solid #e91e63;
+        text-align: center;
     }
-    
-    .course-title {
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: #1a202c;
-        margin-bottom: 0.3rem;
-    }
-    
-    .college-info {
-        font-size: 1rem;
-        color: #718096;
-        font-weight: 500;
-        margin-bottom: 0.5rem;
-    }
-    
-    .instructor-info {
-        font-size: 0.9rem;
-        color: #4a5568;
-        margin-bottom: 1rem;
-    }
-    
-    .course-details {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        flex-wrap: wrap;
-        margin-top: 1rem;
-    }
-    
-    .detail-badge {
-        font-size: 0.8rem;
-        color: #e91e63;
-        font-weight: 600;
-        background: #fdf2f8;
-        padding: 0.4rem 0.8rem;
-        border-radius: 16px;
-        border: 1px solid #f3e8ff;
-    }
-    
-    .progress-summary {
+    .week-card {
         background: white;
+        padding: 2rem;
         border-radius: 12px;
-        padding: 1.5rem;
-        margin: 1rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        border-left: 4px solid #e91e63;
-    }
-    
-    .progress-stats {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 1rem;
-        text-align: center;
-    }
-    
-    .stat-number {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #e91e63;
-    }
-    
-    .stat-label {
-        font-size: 0.8rem;
-        color: #4a5568;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-
-    .latest-feature {
-        margin: 2rem 1rem;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 16px;
-        padding: 2rem;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-        color: white;
-        text-align: center;
-        border: 3px solid #ffd700;
-        animation: pulse-glow 2s infinite;
-    }
-
-    @keyframes pulse-glow {
-        0% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 0 0 0 rgba(255, 215, 0, 0.7); }
-        50% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 0 20px 10px rgba(255, 215, 0, 0.3); }
-        100% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 0 0 0 rgba(255, 215, 0, 0.7); }
-    }
-
-    .special-section {
-        margin: 2rem 1rem;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 16px;
-        padding: 2rem;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-        color: white;
-        text-align: center;
-    }
-
-    .special-title {
-        font-size: 1.4rem;
-        font-weight: 700;
-        margin-bottom: 0.8rem;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-
-    .special-subtitle {
-        font-size: 1rem;
-        opacity: 0.9;
+        border: 2px solid #E5E7EB;
         margin-bottom: 1.5rem;
-        font-weight: 400;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        transition: all 0.3s;
     }
-
-    .special-card {
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 12px;
-        padding: 1.5rem;
-        max-width: 600px;
-        margin: 0 auto;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        text-decoration: none;
-        color: white;
-        display: block;
+    .week-card:hover {
+        box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        border-color: #4F46E5;
     }
-
-    .special-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-        background: rgba(255, 255, 255, 0.2);
-        text-decoration: none;
-        color: white;
-    }
-
-    .special-icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .special-card-title {
-        font-size: 1.1rem;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-    }
-
-    .special-card-desc {
-        font-size: 0.9rem;
-        opacity: 0.9;
-        line-height: 1.4;
-    }
-
-    .featured-section {
-        margin: 2rem 1rem;
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        border-radius: 16px;
-        padding: 2rem;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-        color: white;
-        text-align: center;
-    }
-    
-    .week-section {
-        margin: 1.5rem 1rem;
-        background: white;
-        border-radius: 12px;
-        padding: 1.5rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        border-left: 4px solid #e91e63;
-    }
-    
     .week-title {
-        font-size: 1rem;
-        font-weight: 600;
-        color: #2d3748;
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-    }
-    
-    .week-number {
-        background: #e91e63;
-        color: white;
-        border-radius: 50%;
-        width: 24px;
-        height: 24px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 0.8rem;
-        flex-shrink: 0;
-    }
-    
-    .lesson-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 1rem;
-        margin-bottom: 1rem;
-    }
-    
-    .lesson-card {
-        background: #f7fafc;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        padding: 1rem;
-        text-decoration: none;
-        color: inherit;
-        transition: all 0.2s ease;
-        cursor: pointer;
-        display: block;
-    }
-    
-    .lesson-card:hover {
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        transform: translateY(-2px);
-        text-decoration: none;
-        color: inherit;
-    }
-    
-    .lesson-card.active {
-        border-color: #68d391;
-        background: linear-gradient(135deg, #f0fff4 0%, #f7fafc 100%);
-    }
-
-    .lesson-card.advanced {
-        border-color: #9f7aea;
-        background: linear-gradient(135deg, #faf5ff 0%, #f7fafc 100%);
-    }
-
-    .lesson-card.quiz {
-        border-color: #ffd700;
-        background: linear-gradient(135deg, #fffbf0 0%, #f7fafc 100%);
-        border-width: 2px;
-    }
-
-    .quiz .lesson-icon {
-        color: #d69e2e;
-    }
-
-    .advanced .lesson-icon {
-        color: #805ad5;
-    }
-    
-    .lesson-card.coming-soon {
-        opacity: 0.6;
-        cursor: not-allowed;
-    }
-    
-    .lesson-icon {
+        color: #4F46E5;
         font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-        text-align: center;
-    }
-    
-    .active .lesson-icon {
-        color: #38a169;
-    }
-    
-    .coming-soon .lesson-icon {
-        color: #a0aec0;
-    }
-    
-    .lesson-title {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: #2d3748;
-        margin-bottom: 0.3rem;
-        text-align: center;
-        line-height: 1.2;
-    }
-    
-    .lesson-type {
-        font-size: 0.7rem;
-        color: #718096;
-        text-align: center;
+        font-weight: bold;
         margin-bottom: 0.5rem;
     }
-    
-    .assignment-info {
-        background: #edf2f7;
-        border-radius: 6px;
-        padding: 0.8rem;
-        margin-top: 1rem;
-        border-left: 3px solid #4299e1;
+    .week-description {
+        color: #6B7280;
+        margin-bottom: 1rem;
+        line-height: 1.6;
     }
-    
-    .assignment-title {
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: #2d3748;
-        margin-bottom: 0.3rem;
+    .topic-list {
+        background: #F9FAFB;
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 1rem 0;
     }
-    
-    .assignment-desc {
-        font-size: 0.75rem;
-        color: #4a5568;
-        line-height: 1.3;
+    .resource-section {
+        background: #EEF2FF;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-top: 2rem;
     }
-    
-    .exam-week {
-        background: linear-gradient(135deg, #fed7e2 0%, #fbb6ce 100%);
-        border-left: 4px solid #e91e63;
+    .highlight-box {
+        background: #FEF3C7;
+        border-left: 4px solid #F59E0B;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin: 1rem 0;
     }
+</style>
+""", unsafe_allow_html=True)
+
+# Header
+st.markdown("""
+<div class="main-header">
+    <h1>🧠 PHL201: Introduction to Philosophy</h1>
+    <p style="font-size: 1.2rem; margin-top: 1rem;">CognitiveCloud.ai - Xavier Honablue M.Ed</p>
+    <p style="font-size: 1rem; margin-top: 0.5rem; opacity: 0.9;">A comprehensive journey through philosophical thought and critical reasoning</p>
+</div>
+""", unsafe_allow_html=True)
+
+# Course Overview
+st.markdown("## 📚 Course Overview")
+st.markdown("""
+Welcome to PHL201! This course introduces fundamental questions in philosophy including the nature of reality, 
+knowledge, consciousness, and human existence. Through engaging with classical and contemporary philosophical 
+texts, you'll develop critical thinking skills and explore profound questions about what it means to be human.
+""")
+
+# Weekly Structure
+st.markdown("---")
+st.markdown("## 📅 Weekly Schedule & Assessments")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.markdown("""
+    <div class="week-card">
+        <div class="week-title">Week 1-2: What is Philosophy?</div>
+        <div class="week-description">
+            Introduction to philosophical inquiry, Socratic method, and critical thinking fundamentals.
+        </div>
+        <div class="topic-list">
+            <strong>Topics:</strong>
+            <ul>
+                <li>Socratic Method & The Crito</li>
+                <li>Critical Thinking & Argument Analysis</li>
+                <li>Philosophy vs. Other Disciplines</li>
+                <li>Evaluating Arguments & Premises</li>
+            </ul>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
     
-    .exam-card {
-        background: linear-gradient(135deg, #fed7e2 0%, #fbb6ce 100%);
-        border-color: #e91e63;
-    }
+    st.markdown("""
+    <div class="week-card">
+        <div class="week-title">Week 3-4: Human Nature & Existence</div>
+        <div class="week-description">
+            Exploring existentialism and questions about human nature, freedom, and responsibility.
+        </div>
+        <div class="topic-list">
+            <strong>Topics:</strong>
+            <ul>
+                <li>Sartre's Existentialism</li>
+                <li>Existence Precedes Essence</li>
+                <li>Freedom, Anguish, and Despair</li>
+                <li>Rationalistic vs. Feminist Views</li>
+            </ul>
+        </div>
+        <div class="highlight-box">
+            <strong>⚠️ Week 4 Exam Available</strong><br>
+            <small>Test your understanding of Weeks 1-4 material</small>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
     
-    @media (max-width: 768px) {
-        .lesson-grid {
-            grid-template-columns: 1fr;
-        }
-        
-        .course-details {
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .course-title {
-            font-size: 1.5rem;
-        }
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-    # Course Header
     st.markdown("""
-    <div class="main-header">
-        <h1 class="course-title">🧠 PHL 201: Introduction to Philosophy</h1>
-        <p class="college-info">Wayne County Community College District</p>
-        <p class="instructor-info">Instructor: Xavier Honablue, M.Ed. | Room 204 | honablue@umich.edu</p>
-        <div class="course-details">
-            <div class="detail-badge">3 Credit Hours</div>
-            <div class="detail-badge">45 Contact Hours</div>
-            <div class="detail-badge">16 Weeks</div>
-            <div class="detail-badge">Tue/Thu 11:00 AM-12:44 PM</div>
+    <div class="week-card">
+        <div class="week-title">Week 5-6: Mind-Body Problem</div>
+        <div class="week-description">
+            Classical and contemporary theories about the relationship between mind and body.
+        </div>
+        <div class="topic-list">
+            <strong>Topics:</strong>
+            <ul>
+                <li>Plato's Theory of the Soul</li>
+                <li>Descartes' Dualism</li>
+                <li>The Mind-Body Problem</li>
+                <li>Consciousness & First-Person Experience</li>
+            </ul>
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-    # Progress Summary - Updated stats
+with col2:
     st.markdown("""
-    <div class="progress-summary">
-        <div class="progress-stats">
-            <div>
-                <div class="stat-number">9</div>
-                <div class="stat-label">Active Lessons</div>
-            </div>
-            <div>
-                <div class="stat-number">23</div>
-                <div class="stat-label">Coming Soon</div>
-            </div>
-            <div>
-                <div class="stat-number">13</div>
-                <div class="stat-label">Assignments</div>
-            </div>
-            <div>
-                <div class="stat-number">24</div>
-                <div class="stat-label">Hours Available</div>
-            </div>
+    <div class="week-card">
+        <div class="week-title">Week 7-8: Behaviorism & Functionalism</div>
+        <div class="week-description">
+            Modern materialist approaches to understanding the mind through behavior and function.
+        </div>
+        <div class="topic-list">
+            <strong>Topics:</strong>
+            <ul>
+                <li>Ryle's Behaviorism</li>
+                <li>Ghost in the Machine Critique</li>
+                <li>Functionalism Theory</li>
+                <li>Mental States as Functional Roles</li>
+            </ul>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="week-card">
+        <div class="week-title">Week 9-10: Identity Theory & AI</div>
+        <div class="week-description">
+            Brain-mind identity and computational theories of consciousness.
+        </div>
+        <div class="topic-list">
+            <strong>Topics:</strong>
+            <ul>
+                <li>Smart's Identity Theory</li>
+                <li>Computer Models of Mind</li>
+                <li>Turing Test & Machine Intelligence</li>
+                <li>Searle's Chinese Room Argument</li>
+            </ul>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="week-card">
+        <div class="week-title">Week 11-12: Contemporary Debates</div>
+        <div class="week-description">
+            Eliminative materialism, property dualism, and the hard problem of consciousness.
+        </div>
+        <div class="topic-list">
+            <strong>Topics:</strong>
+            <ul>
+                <li>Churchland's Eliminative Materialism</li>
+                <li>Chalmers' Property Dualism</li>
+                <li>Philosophical Zombies</li>
+                <li>The Hard Problem of Consciousness</li>
+            </ul>
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-    # Latest Feature - Gettier Problem Critique
+# Assessment Links
+st.markdown("---")
+st.markdown("## 🎯 Course Assessments")
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
     st.markdown("""
-    <div class="latest-feature">
-        <div class="special-title">🆕 Latest Feature: Gettier Problem Critique</div>
-        <div class="special-subtitle">Advanced Epistemology - Critical Analysis</div>
-        <a href="https://phl201-critique.streamlit.app/" target="_blank" class="special-card">
-            <div class="special-icon">🔍📖</div>
-            <div class="special-card-title">Philosophical Critique: Faulty Inference vs Reliable Perception</div>
-            <div class="special-card-desc">
-                Challenge the Gettier problem's treatment of justified true belief through critical analysis 
-                of the fake barn scenario. Examine whether perception provides knowledge when it accurately 
-                tracks reality, and develop your own philosophical critique using structured argumentation.
-            </div>
-        </a>
+    <div style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); padding: 1.5rem; border-radius: 12px; color: white; text-align: center;">
+        <h3 style="margin: 0;">Week 4 Exam</h3>
+        <p style="margin: 0.5rem 0; opacity: 0.9;">Weeks 1-4 Coverage</p>
+        <p style="font-size: 0.9rem; margin: 0.5rem 0;">Existentialism & Human Nature</p>
     </div>
     """, unsafe_allow_html=True)
-
-    # Featured Research Paper Section
-    st.markdown("""
-    <div class="featured-section">
-        <div class="special-title">📄 Featured Research Paper</div>
-        <div class="special-subtitle">Xavier Honablue, M.Ed. - Academic Publication</div>
-        <a href="https://xavier-honablue-paper3.streamlit.app/" target="_blank" class="special-card">
-            <div class="special-icon">📚✨</div>
-            <div class="special-card-title">Academic Research: Philosophy in Practice</div>
-            <div class="special-card-desc">
-                Explore cutting-edge philosophical research by your instructor. This academic paper 
-                demonstrates the practical application of philosophical principles in contemporary 
-                educational and intellectual contexts.
-            </div>
-        </a>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Special Advanced Section - Metaphysics CognitiveCloud
-    st.markdown("""
-    <div class="special-section">
-        <div class="special-title">🌟 Advanced Metaphysics Module</div>
-        <div class="special-subtitle">CognitiveCloud.ai - Logic Symbol Geometry & Infinitesimal Reality</div>
-        <a href="https://phl201-metaphysics1.streamlit.app/" target="_blank" class="special-card">
-            <div class="special-icon">∧∨¬→ε</div>
-            <div class="special-card-title">Metaphysics CognitiveCloud: Logic Symbols & Geometric Meaning</div>
-            <div class="special-card-desc">
-                Explore how logic symbols encode geometric intuitions about reality's structure. 
-                Discover the epsilon (ε) principle, string theory foundations, and dimensional transcendence. 
-                Interactive 3D visualizations reveal how linearity collapses into wave-interdependence.
-            </div>
-        </a>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Week 1: Course Introduction
-    st.markdown("""
-    <div class="week-section">
-        <div class="week-title">
-            <div class="week-number">1</div>
-            Week 1: Course Introduction
-        </div>
-        <div class="lesson-grid">
-            <a href="https://philosophy-101-day1.streamlit.app/" target="_blank" class="lesson-card active">
-                <div class="lesson-icon">🤔</div>
-                <h4 class="lesson-title">What is Philosophy?</h4>
-                <p class="lesson-type">Tuesday • Interactive Exploration</p>
-            </a>
-            <a href="https://phl201-branches.streamlit.app/" target="_blank" class="lesson-card active">
-                <div class="lesson-icon">🌳</div>
-                <h4 class="lesson-title">Three Branches of Philosophy</h4>
-                <p class="lesson-type">Thursday • Conceptual Framework</p>
-            </a>
-        </div>
-        <div class="assignment-info">
-            <div class="assignment-title">Welcome Activity</div>
-            <div class="assignment-desc">Full credit for all students - Course introduction and expectations</div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Week 2: Ancient Philosophy
-    st.markdown("""
-    <div class="week-section">
-        <div class="week-title">
-            <div class="week-number">2</div>
-            Week 2: Ancient Philosophy
-        </div>
-        <div class="lesson-grid">
-            <div class="lesson-card coming-soon">
-                <div class="lesson-icon">🏛️</div>
-                <h4 class="lesson-title">Introduction to Ancient Philosophy</h4>
-                <p class="lesson-type">Tuesday • Historical Context</p>
-            </div>
-            <div class="lesson-card coming-soon">
-                <div class="lesson-icon">🎭</div>
-                <h4 class="lesson-title">Socratic Method & Dialogue</h4>
-                <p class="lesson-type">Thursday • Critical Thinking</p>
-            </div>
-            <a href="https://phl201-metaphysics1.streamlit.app/" target="_blank" class="lesson-card advanced">
-                <div class="lesson-icon">∧∨¬</div>
-                <h4 class="lesson-title">Advanced: Logic Symbol Geometry</h4>
-                <p class="lesson-type">Optional • Metaphysical Foundations</p>
-            </a>
-        </div>
-        <div class="assignment-info">
-            <div class="assignment-title">Assignment 1: Plato's Cave Video Reflection (4.6%)</div>
-            <div class="assignment-desc">300-400 word reflection on Plato's Allegory of the Cave - Due Thursday</div>
-        </div>
-        <div class="assignment-info" style="background: #e6fffa; border-left: 3px solid #319795;">
-            <a href="https://logic1-phl202.streamlit.app/" target="_blank" style="text-decoration: none; display: block;">
-                <div style="background: #319795; color: white; padding: 0.8rem 1.2rem; border-radius: 8px; text-align: center; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.background='#2c7a7b'" onmouseout="this.style.background='#319795'">
-                    <div style="font-weight: 600; margin-bottom: 0.2rem;">🎮 Optional Logic Exercises (No Grade)</div>
-                    <div style="font-size: 0.85rem; opacity: 0.9;">Logic Games & Exercises - Practice critical thinking skills</div>
-                </div>
-            </a>
-        </div>
-        <div class="assignment-info" style="background: #faf5ff; border-left: 3px solid #9f7aea;">
-            <a href="https://phl201-metaphysics1.streamlit.app/" target="_blank" style="text-decoration: none; display: block;">
-                <div style="background: #9f7aea; color: white; padding: 0.8rem 1.2rem; border-radius: 8px; text-align: center; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.background='#805ad5'" onmouseout="this.style.background='#9f7aea'">
-                    <div style="font-weight: 600; margin-bottom: 0.2rem;">🌟 Advanced: Metaphysics CognitiveCloud (No Grade)</div>
-                    <div style="font-size: 0.85rem; opacity: 0.9;">Explore logic symbol geometry & epsilon principle - 3D interactive visualizations</div>
-                </div>
-            </a>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Week 3: Plato's Philosophy - ACTIVE
-    st.markdown("""
-    <div class="week-section">
-        <div class="week-title">
-            <div class="week-number">3</div>
-            Week 3: Plato's Philosophy (3 hours)
-        </div>
-        <div class="lesson-grid">
-            <a href="https://phl201-week3.streamlit.app/" target="_blank" class="lesson-card active">
-                <div class="lesson-icon">✏️</div>
-                <h4 class="lesson-title">Writing Revision Workshop</h4>
-                <p class="lesson-type">Tuesday • Writing Improvement</p>
-            </a>
-            <a href="https://phl201-week3.streamlit.app/" target="_blank" class="lesson-card active">
-                <div class="lesson-icon">💡</div>
-                <h4 class="lesson-title">Plato's Theory of Forms</h4>
-                <p class="lesson-type">Thursday • Metaphysics & Reality</p>
-            </a>
-        </div>
-        <div class="assignment-info">
-            <div class="assignment-title">Assignment 2: Rewritten Video Reflection (4.6%)</div>
-            <div class="assignment-desc">Revised Cave reflection incorporating Theory of Forms - Due Tuesday</div>
-        </div>
-        <div class="assignment-info">
-            <div class="assignment-title">Assignment 3: Aristotelian Ethics Reading Response (4.6%)</div>
-            <div class="assignment-desc">350-400 word analysis of virtue ethics - Due Thursday</div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Week 4: Medieval Philosophy
-    st.markdown("""
-    <div class="week-section">
-        <div class="week-title">
-            <div class="week-number">4</div>
-            Week 4: Medieval Philosophy & Epistemology (3 hours)
-        </div>
-        <div class="lesson-grid">
-            <div class="lesson-card coming-soon">
-                <div class="lesson-icon">🏰</div>
-                <h4 class="lesson-title">Medieval Philosophy - Augustine & Aquinas</h4>
-                <p class="lesson-type">Tuesday</p>
-            </div>
-            <a href="https://phl201-epistemology.streamlit.app/" target="_blank" class="lesson-card active">
-                <div class="lesson-icon">🔍</div>
-                <h4 class="lesson-title">Epistemology: Theory of Knowledge</h4>
-                <p class="lesson-type">Thursday • Knowledge & Belief</p>
-            </a>
-            <a href="https://phl201-week4-quiz.streamlit.app/" target="_blank" class="lesson-card quiz">
-                <div class="lesson-icon">🧠</div>
-                <h4 class="lesson-title">Week 4: Philosophy Quiz (85 Questions)</h4>
-                <p class="lesson-type">Assessment • Ancient Philosophy & Human Nature</p>
-            </a>
-        </div>
-        <div class="assignment-info">
-            <div class="assignment-title">Assignment 4: Comparative Philosophy Journal Entry (4.6%)</div>
-            <div class="assignment-desc">Weekly philosophical writing and reflection assignment</div>
-        </div>
-        <div class="assignment-info" style="background: #f0fff4; border-left: 3px solid #38a169;">
-            <a href="https://phl201-epistemology.streamlit.app/" target="_blank" style="text-decoration: none; display: block;">
-                <div style="background: #38a169; color: white; padding: 0.8rem 1.2rem; border-radius: 8px; text-align: center; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.background='#2f855a'" onmouseout="this.style.background='#38a169'">
-                    <div style="font-weight: 600; margin-bottom: 0.2rem;">🔍 Epistemology Interactive Module</div>
-                    <div style="font-size: 0.85rem; opacity: 0.9;">Explore knowledge, belief, and skepticism through interactive exercises</div>
-                </div>
-            </a>
-        </div>
-        <div class="assignment-info" style="background: #fffbf0; border-left: 3px solid #d69e2e;">
-            <a href="https://phl201-week4-quiz.streamlit.app/" target="_blank" style="text-decoration: none; display: block;">
-                <div style="background: #d69e2e; color: white; padding: 0.8rem 1.2rem; border-radius: 8px; text-align: center; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.background='#b7791f'" onmouseout="this.style.background='#d69e2e'">
-                    <div style="font-weight: 600; margin-bottom: 0.2rem;">🧠 Week 4 Philosophy Quiz (Optional)</div>
-                    <div style="font-size: 0.85rem; opacity: 0.9;">85-question comprehensive quiz - Test your knowledge of ancient philosophy</div>
-                </div>
-            </a>
-        </div>
-        <div class="assignment-info" style="background: #f0fff4; border-left: 3px solid #38a169;">
-            <a href="https://phl201-critique.streamlit.app/" target="_blank" style="text-decoration: none; display: block;">
-                <div style="background: #38a169; color: white; padding: 0.8rem 1.2rem; border-radius: 8px; text-align: center; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.background='#2f855a'" onmouseout="this.style.background='#38a169'">
-                    <div style="font-weight: 600; margin-bottom: 0.2rem;">🔍 NEW: Gettier Problem Critique</div>
-                    <div style="font-size: 0.85rem; opacity: 0.9;">Advanced epistemology - Challenge JTB through critical analysis of the fake barn scenario</div>
-                </div>
-            </a>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Week 5: Eastern Philosophy - ACTIVE
-    st.markdown("""
-    <div class="week-section">
-        <div class="week-title">
-            <div class="week-number">5</div>
-            Week 5: Eastern Philosophy (3 hours)
-        </div>
-        <div class="lesson-grid">
-            <a href="https://phl202-buddhism.streamlit.app/" target="_blank" class="lesson-card active">
-                <div class="lesson-icon">☸️</div>
-                <h4 class="lesson-title">Buddhist Philosophy</h4>
-                <p class="lesson-type">Tuesday • Eastern Wisdom</p>
-            </a>
-            <div class="lesson-card coming-soon">
-                <div class="lesson-icon">📜</div>
-                <h4 class="lesson-title">Confucian Thought</h4>
-                <p class="lesson-type">Thursday • Social Philosophy</p>
-            </div>
-        </div>
-        <div class="assignment-info">
-            <div class="assignment-title">Assignment 5: Eastern Philosophy Reflection Paper (4.6%)</div>
-            <div class="assignment-desc">350-400 word reflection on Buddhist philosophy and its relevance - Due Thursday</div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Continue with remaining weeks
-    weeks_data = [
-        {
-            "week": 6,
-            "title": "African & Indigenous Philosophy",
-            "lessons": [("African Philosophy Traditions", "🌍", "Tuesday"), ("Indigenous Philosophical Perspectives", "🪶", "Thursday")],
-            "assignment": "Assignment 6: Cultural Philosophy Comparison Chart (4.6%)"
-        },
-        {
-            "week": 7,
-            "title": "Modern Philosophy",
-            "lessons": [("Descartes & Rationalism", "🧠", "Tuesday"), ("Empiricism - Locke & Hume", "👁️", "Thursday")],
-            "assignment": "Assignment 7: Rationalism vs. Empiricism Debate Preparation (4.6%)"
-        },
-        {
-            "week": 8,
-            "title": "Midterm Week",
-            "lessons": [("Midterm Review", "📚", "Tuesday"), ("MIDTERM EXAM", "📝", "Thursday")],
-            "assignment": "Midterm Examination (20%)",
-            "exam": True
-        },
-        {
-            "week": 9,
-            "title": "Kant & Utilitarianism",
-            "lessons": [("Kant's Critical Philosophy", "⚖️", "Tuesday"), ("Ethics - Utilitarianism", "🎯", "Thursday")],
-            "assignment": "Assignment 8: Ethical Theory Application Exercise (4.6%)"
-        },
-        {
-            "week": 10,
-            "title": "Ethical Theories",
-            "lessons": [("Deontological Ethics", "📋", "Tuesday"), ("Virtue Ethics", "🌟", "Thursday")],
-            "assignment": "Assignment 9: Personal Ethics Philosophy Paper (4.6%)"
-        },
-        {
-            "week": 11,
-            "title": "Political Philosophy",
-            "lessons": [("Social Contract Theory", "🤝", "Tuesday"), ("Justice and Rights", "⚖️", "Thursday")],
-            "assignment": "Assignment 10: Political Philosophy Case Study Analysis (4.6%)"
-        },
-        {
-            "week": 12,
-            "title": "Philosophy of Science",
-            "lessons": [("Philosophy of Science", "🔬", "Tuesday"), ("Thanksgiving Break", "🦃", "Thursday")],
-            "assignment": "Assignment 11: Science and Philosophy Reflection (4.6%)"
-        },
-        {
-            "week": 13,
-            "title": "Epistemology - Advanced Topics",
-            "lessons": [("Gettier Problem Critique", "🔍", "Tuesday"), ("Knowledge & Justification", "📖", "Thursday")],
-            "assignment": "Assignment 12: Philosophical Critique Essay (4.6%)",
-            "active_links": ["https://phl201-critique.streamlit.app/"]
-        },
-        {
-            "week": 14,
-            "title": "Contemporary Philosophy",
-            "lessons": [("Contemporary Philosophy Issues", "🌐", "Tuesday"), ("Student Philosopher Presentations", "🎤", "Thursday")],
-            "assignment": "Assignment 13: Philosopher Research Presentation (4.8%)"
-        },
-        {
-            "week": 15,
-            "title": "Philosophy & Technology",
-            "lessons": [("Philosophy and Technology", "💻", "Tuesday"), ("Final Review Session", "📖", "Thursday")],
-            "assignment": "Final Exam Preparation"
-        },
-        {
-            "week": 16,
-            "title": "Final Examination",
-            "lessons": [("FINAL EXAM", "📝", "Tuesday")],
-            "assignment": "Final Examination (20%)",
-            "exam": True
-        }
-    ]
-
-    for week_info in weeks_data:
-        section_class = "week-section exam-week" if week_info.get("exam") else "week-section"
-        st.markdown(f"""
-        <div class="{section_class}">
-            <div class="week-title">
-                <div class="week-number">{week_info['week']}</div>
-                Week {week_info['week']}: {week_info['title']}
-            </div>
-            <div class="lesson-grid">
-        """, unsafe_allow_html=True)
-        
-        active_links = week_info.get("active_links", [])
-        for idx, lesson_data in enumerate(week_info["lessons"]):
-            lesson_title, icon, day = lesson_data
-            
-            if week_info.get("exam"):
-                card_class = "lesson-card exam-card"
-                link_html = f'<div class="{card_class}">'
-                close_tag = "</div>"
-            elif idx < len(active_links):
-                card_class = "lesson-card active"
-                link_html = f'<a href="{active_links[idx]}" target="_blank" class="{card_class}">'
-                close_tag = "</a>"
-            else:
-                card_class = "lesson-card coming-soon"
-                link_html = f'<div class="{card_class}">'
-                close_tag = "</div>"
-            
-            st.markdown(f"""
-                {link_html}
-                    <div class="lesson-icon">{icon}</div>
-                    <h4 class="lesson-title">{lesson_title}</h4>
-                    <p class="lesson-type">{day}</p>
-                {close_tag}
-            """, unsafe_allow_html=True)
-        
+    
+    if st.button("📝 Take Week 4 Exam", use_container_width=True, type="primary"):
         st.markdown("""
-            </div>
-            <div class="assignment-info">
+        <div class="highlight-box">
+            <strong>Opening Week 4 Exam...</strong><br>
+            <p>Click the link below to access the exam:</p>
+            <a href="https://phl201-week4-exam.streamlit.app/" target="_blank" style="font-size: 1.1rem; color: #4F46E5; font-weight: 600;">
+                🔗 PHL201 Week 4 Exam →
+            </a>
+        </div>
         """, unsafe_allow_html=True)
-        
-        if week_info.get("exam"):
-            st.markdown(f"""
-                <div class="assignment-title">{week_info['assignment']}</div>
-                <div class="assignment-desc">Comprehensive examination covering course materials</div>
-            """, unsafe_allow_html=True)
-        else:
-            st.markdown(f"""
-                <div class="assignment-title">{week_info['assignment']}</div>
-                <div class="assignment-desc">Weekly philosophical writing and reflection assignment</div>
-            """, unsafe_allow_html=True)
-        
-        st.markdown("</div></div>", unsafe_allow_html=True)
 
-if __name__ == "__main__":
-    main()
+with col2:
+    st.markdown("""
+    <div style="background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%); padding: 1.5rem; border-radius: 12px; color: white; text-align: center;">
+        <h3 style="margin: 0;">Full Assessment</h3>
+        <p style="margin: 0.5rem 0; opacity: 0.9;">All 110 Questions</p>
+        <p style="font-size: 0.9rem; margin: 0.5rem 0;">Complete Course Coverage</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    if st.button("🧠 Take Full Assessment", use_container_width=True):
+        st.info("This will launch the complete 110-question assessment covering all course topics. Make sure you have adequate time to complete it.")
+
+with col3:
+    st.markdown("""
+    <div style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); padding: 1.5rem; border-radius: 12px; color: white; text-align: center;">
+        <h3 style="margin: 0;">Practice Mode</h3>
+        <p style="margin: 0.5rem 0; opacity: 0.9;">By Category</p>
+        <p style="font-size: 0.9rem; margin: 0.5rem 0;">Focused Topic Review</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    if st.button("📖 Practice by Topic", use_container_width=True):
+        st.success("Practice mode allows you to focus on specific philosophical topics. Use the category filter in the full assessment.")
+
+# Resources Section
+st.markdown("---")
+st.markdown("""
+<div class="resource-section">
+    <h2 style="color: #4F46E5; margin-bottom: 1rem;">📚 Additional Resources</h2>
+    
+    <h3 style="color: #6B7280; margin-top: 1.5rem;">Stanford Encyclopedia of Philosophy</h3>
+    <p>Peer-reviewed articles on all major philosophical topics covered in this course.</p>
+    <a href="https://plato.stanford.edu/" target="_blank" style="color: #4F46E5; font-weight: 600;">Visit SEP →</a>
+    
+    <h3 style="color: #6B7280; margin-top: 1.5rem;">Internet Encyclopedia of Philosophy</h3>
+    <p>Accessible articles on philosophy topics with clear explanations.</p>
+    <a href="https://iep.utm.edu/" target="_blank" style="color: #4F46E5; font-weight: 600;">Visit IEP →</a>
+    
+    <h3 style="color: #6B7280; margin-top: 1.5rem;">PhilPapers</h3>
+    <p>Comprehensive database of philosophy research papers and articles.</p>
+    <a href="https://philpapers.org/" target="_blank" style="color: #4F46E5; font-weight: 600;">Visit PhilPapers →</a>
+</div>
+""", unsafe_allow_html=True)
+
+# Study Tips
+st.markdown("---")
+st.markdown("## 💡 Study Tips for Success")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.markdown("""
+    **Before Each Assessment:**
+    - Review your notes from the relevant weeks
+    - Re-read key passages from the textbook
+    - Practice reconstructing philosophical arguments
+    - Test yourself on key concepts and terminology
+    """)
+
+with col2:
+    st.markdown("""
+    **During the Assessment:**
+    - Read each question carefully
+    - Consider all answer options before selecting
+    - Use the category filter to focus your review
+    - Take breaks if needed (your progress is saved)
+    """)
+
+# Footer
+st.markdown("---")
+st.markdown("""
+<div style="text-align: center; color: #6B7280; padding: 2rem 0;">
+    <p><strong>PHL201: Introduction to Philosophy</strong></p>
+    <p>CognitiveCloud.ai - Xavier Honablue M.Ed</p>
+    <p style="font-size: 0.9rem; margin-top: 1rem;">
+        For technical support or course questions, please contact your instructor.
+    </p>
+</div>
+""", unsafe_allow_html=True)
