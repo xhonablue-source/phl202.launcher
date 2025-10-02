@@ -101,7 +101,7 @@ def main():
 
     .latest-feature {
         margin: 2rem 1rem;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
         border-radius: 16px;
         padding: 2rem;
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
@@ -396,18 +396,19 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Latest Feature - Gettier Problem Critique
+    # Latest Feature - Week 4 Philosophy Exam
     st.markdown("""
     <div class="latest-feature">
-        <div class="special-title">🆕 Latest Feature: Gettier Problem Critique</div>
-        <div class="special-subtitle">Advanced Epistemology - Critical Analysis</div>
-        <a href="https://phl201-critique.streamlit.app/" target="_blank" class="special-card">
-            <div class="special-icon">🔍📖</div>
-            <div class="special-card-title">Philosophical Critique: Faulty Inference vs Reliable Perception</div>
+        <div class="special-title">🆕 Latest Feature: Week 4 Philosophy Exam</div>
+        <div class="special-subtitle">Comprehensive Assessment - Ancient Philosophy & Human Nature</div>
+        <a href="https://phl201-week4-exam.streamlit.app/" target="_blank" class="special-card">
+            <div class="special-icon">📝🧠</div>
+            <div class="special-card-title">Week 4 Philosophy Exam - Now Available</div>
             <div class="special-card-desc">
-                Challenge the Gettier problem's treatment of justified true belief through critical analysis 
-                of the fake barn scenario. Examine whether perception provides knowledge when it accurately 
-                tracks reality, and develop your own philosophical critique using structured argumentation.
+                Test your comprehensive understanding of ancient philosophy and human nature. 
+                This exam covers key concepts from Weeks 1-4 including Socratic method, Plato's Theory 
+                of Forms, Aristotelian ethics, and foundational epistemological principles. 
+                Complete the exam to demonstrate your mastery of early philosophical traditions.
             </div>
         </a>
     </div>
@@ -594,10 +595,18 @@ def main():
                 </div>
             </a>
         </div>
+        <div class="assignment-info" style="background: #fff5f5; border-left: 3px solid #e53e3e;">
+            <a href="https://phl201-week4-exam.streamlit.app/" target="_blank" style="text-decoration: none; display: block;">
+                <div style="background: #e53e3e; color: white; padding: 0.8rem 1.2rem; border-radius: 8px; text-align: center; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.background='#c53030'" onmouseout="this.style.background='#e53e3e'">
+                    <div style="font-weight: 600; margin-bottom: 0.2rem;">📝 Week 4 Philosophy Exam</div>
+                    <div style="font-size: 0.85rem; opacity: 0.9;">Comprehensive exam - Ancient Philosophy & Human Nature</div>
+                </div>
+            </a>
+        </div>
         <div class="assignment-info" style="background: #f0fff4; border-left: 3px solid #38a169;">
             <a href="https://phl201-critique.streamlit.app/" target="_blank" style="text-decoration: none; display: block;">
                 <div style="background: #38a169; color: white; padding: 0.8rem 1.2rem; border-radius: 8px; text-align: center; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.background='#2f855a'" onmouseout="this.style.background='#38a169'">
-                    <div style="font-weight: 600; margin-bottom: 0.2rem;">🔍 NEW: Gettier Problem Critique</div>
+                    <div style="font-weight: 600; margin-bottom: 0.2rem;">🔍 Gettier Problem Critique</div>
                     <div style="font-size: 0.85rem; opacity: 0.9;">Advanced epistemology - Challenge JTB through critical analysis of the fake barn scenario</div>
                 </div>
             </a>
@@ -636,7 +645,64 @@ def main():
         {
             "week": 6,
             "title": "African & Indigenous Philosophy",
-            "lessons": [("African Philosophy Traditions", "🌍", "Tuesday"), ("Indigenous Philosophical Perspectives", "🪶", "Thursday")],
+            "lessons": [("African Philosophy Traditions", "🌍", "Tuesday"), ("Indigenous Philosophical Perspectives", "🪶", "Thursday")    ]
+
+    for week_info in weeks_data:
+        section_class = "week-section exam-week" if week_info.get("exam") else "week-section"
+        st.markdown(f"""
+        <div class="{section_class}">
+            <div class="week-title">
+                <div class="week-number">{week_info['week']}</div>
+                Week {week_info['week']}: {week_info['title']}
+            </div>
+            <div class="lesson-grid">
+        """, unsafe_allow_html=True)
+        
+        active_links = week_info.get("active_links", [])
+        for idx, lesson_data in enumerate(week_info["lessons"]):
+            lesson_title, icon, day = lesson_data
+            
+            if week_info.get("exam"):
+                card_class = "lesson-card exam-card"
+                link_html = f'<div class="{card_class}">'
+                close_tag = "</div>"
+            elif idx < len(active_links):
+                card_class = "lesson-card active"
+                link_html = f'<a href="{active_links[idx]}" target="_blank" class="{card_class}">'
+                close_tag = "</a>"
+            else:
+                card_class = "lesson-card coming-soon"
+                link_html = f'<div class="{card_class}">'
+                close_tag = "</div>"
+            
+            st.markdown(f"""
+                {link_html}
+                    <div class="lesson-icon">{icon}</div>
+                    <h4 class="lesson-title">{lesson_title}</h4>
+                    <p class="lesson-type">{day}</p>
+                {close_tag}
+            """, unsafe_allow_html=True)
+        
+        st.markdown("""
+            </div>
+            <div class="assignment-info">
+        """, unsafe_allow_html=True)
+        
+        if week_info.get("exam"):
+            st.markdown(f"""
+                <div class="assignment-title">{week_info['assignment']}</div>
+                <div class="assignment-desc">Comprehensive examination covering course materials</div>
+            """, unsafe_allow_html=True)
+        else:
+            st.markdown(f"""
+                <div class="assignment-title">{week_info['assignment']}</div>
+                <div class="assignment-desc">Weekly philosophical writing and reflection assignment</div>
+            """, unsafe_allow_html=True)
+        
+        st.markdown("</div></div>", unsafe_allow_html=True)
+
+if __name__ == "__main__":
+    main(),
             "assignment": "Assignment 6: Cultural Philosophy Comparison Chart (4.6%)"
         },
         {
@@ -702,61 +768,3 @@ def main():
             "assignment": "Final Examination (20%)",
             "exam": True
         }
-    ]
-
-    for week_info in weeks_data:
-        section_class = "week-section exam-week" if week_info.get("exam") else "week-section"
-        st.markdown(f"""
-        <div class="{section_class}">
-            <div class="week-title">
-                <div class="week-number">{week_info['week']}</div>
-                Week {week_info['week']}: {week_info['title']}
-            </div>
-            <div class="lesson-grid">
-        """, unsafe_allow_html=True)
-        
-        active_links = week_info.get("active_links", [])
-        for idx, lesson_data in enumerate(week_info["lessons"]):
-            lesson_title, icon, day = lesson_data
-            
-            if week_info.get("exam"):
-                card_class = "lesson-card exam-card"
-                link_html = f'<div class="{card_class}">'
-                close_tag = "</div>"
-            elif idx < len(active_links):
-                card_class = "lesson-card active"
-                link_html = f'<a href="{active_links[idx]}" target="_blank" class="{card_class}">'
-                close_tag = "</a>"
-            else:
-                card_class = "lesson-card coming-soon"
-                link_html = f'<div class="{card_class}">'
-                close_tag = "</div>"
-            
-            st.markdown(f"""
-                {link_html}
-                    <div class="lesson-icon">{icon}</div>
-                    <h4 class="lesson-title">{lesson_title}</h4>
-                    <p class="lesson-type">{day}</p>
-                {close_tag}
-            """, unsafe_allow_html=True)
-        
-        st.markdown("""
-            </div>
-            <div class="assignment-info">
-        """, unsafe_allow_html=True)
-        
-        if week_info.get("exam"):
-            st.markdown(f"""
-                <div class="assignment-title">{week_info['assignment']}</div>
-                <div class="assignment-desc">Comprehensive examination covering course materials</div>
-            """, unsafe_allow_html=True)
-        else:
-            st.markdown(f"""
-                <div class="assignment-title">{week_info['assignment']}</div>
-                <div class="assignment-desc">Weekly philosophical writing and reflection assignment</div>
-            """, unsafe_allow_html=True)
-        
-        st.markdown("</div></div>", unsafe_allow_html=True)
-
-if __name__ == "__main__":
-    main()
