@@ -367,6 +367,7 @@ def main():
             <div class="detail-badge">3 Credit Hours</div>
             <div class="detail-badge">45 Contact Hours</div>
             <div class="detail-badge">16 Weeks</div>
+            <div class="detail-badge">Tue/Thu 11:00 AM-12:44 PM</div>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -376,11 +377,11 @@ def main():
     <div class="progress-summary">
         <div class="progress-stats">
             <div>
-                <div class="stat-number">10</div>
+                <div class="stat-number">9</div>
                 <div class="stat-label">Active Lessons</div>
             </div>
             <div>
-                <div class="stat-number">22</div>
+                <div class="stat-number">23</div>
                 <div class="stat-label">Coming Soon</div>
             </div>
             <div>
@@ -388,27 +389,26 @@ def main():
                 <div class="stat-label">Assignments</div>
             </div>
             <div>
-                <div class="stat-number">27</div>
+                <div class="stat-number">24</div>
                 <div class="stat-label">Hours Available</div>
             </div>
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-    # Latest Feature - EXAM 1 (120 Questions)
+    # Latest Feature - Week 4 Philosophy Exam
     st.markdown("""
     <div class="latest-feature">
-        <div class="special-title">🆕 Latest Feature: EXAM 1 - Comprehensive Philosophy Assessment</div>
-        <div class="special-subtitle">120 Questions • All 5 Sections • Tutorial Mode with Instant Feedback</div>
-        <a href="https://phl201-exam1.streamlit.app/" target="_blank" class="special-card">
-            <div class="special-icon">📝🎓✨</div>
-            <div class="special-card-title">EXAM 1: Complete Philosophy Exam (120 Questions)</div>
+        <div class="special-title">🆕 Latest Feature: Week 4 Philosophy Exam</div>
+        <div class="special-subtitle">Comprehensive Assessment - Ancient Philosophy & Human Nature</div>
+        <a href="https://phl201-week4-exam.streamlit.app/" target="_blank" class="special-card">
+            <div class="special-icon">📝🧠</div>
+            <div class="special-card-title">Week 4 Philosophy Exam - Now Available</div>
             <div class="special-card-desc">
-                Master all core philosophical concepts with this comprehensive exam covering Epistemology (30Q), 
-                Plato's Theory of Forms (20Q), Socrates & Ancient Philosophy (20Q), Human Nature & Darwin (20Q), 
-                and Logic & Argumentation (30Q). Features tutorial mode with instant feedback, detailed explanations 
-                for every question, real-time scoring, and section-by-section performance analysis. Perfect for 
-                comprehensive review and exam preparation!
+                Test your comprehensive understanding of ancient philosophy and human nature. 
+                This exam covers key concepts from Weeks 1-4 including Socratic method, Plato's Theory 
+                of Forms, Aristotelian ethics, and foundational epistemological principles. 
+                Complete the exam to demonstrate your mastery of early philosophical traditions.
             </div>
         </a>
     </div>
@@ -459,12 +459,12 @@ def main():
             <a href="https://philosophy-101-day1.streamlit.app/" target="_blank" class="lesson-card active">
                 <div class="lesson-icon">🤔</div>
                 <h4 class="lesson-title">What is Philosophy?</h4>
-                <p class="lesson-type">Interactive Exploration</p>
+                <p class="lesson-type">Tuesday • Interactive Exploration</p>
             </a>
             <a href="https://phl201-branches.streamlit.app/" target="_blank" class="lesson-card active">
                 <div class="lesson-icon">🌳</div>
                 <h4 class="lesson-title">Three Branches of Philosophy</h4>
-                <p class="lesson-type">Conceptual Framework</p>
+                <p class="lesson-type">Thursday • Conceptual Framework</p>
             </a>
         </div>
         <div class="assignment-info">
@@ -485,12 +485,12 @@ def main():
             <div class="lesson-card coming-soon">
                 <div class="lesson-icon">🏛️</div>
                 <h4 class="lesson-title">Introduction to Ancient Philosophy</h4>
-                <p class="lesson-type">Historical Context</p>
+                <p class="lesson-type">Tuesday • Historical Context</p>
             </div>
             <div class="lesson-card coming-soon">
                 <div class="lesson-icon">🎭</div>
                 <h4 class="lesson-title">Socratic Method & Dialogue</h4>
-                <p class="lesson-type">Critical Thinking</p>
+                <p class="lesson-type">Thursday • Critical Thinking</p>
             </div>
             <a href="https://phl201-metaphysics1.streamlit.app/" target="_blank" class="lesson-card advanced">
                 <div class="lesson-icon">∧∨¬</div>
@@ -500,7 +500,7 @@ def main():
         </div>
         <div class="assignment-info">
             <div class="assignment-title">Assignment 1: Plato's Cave Video Reflection (4.6%)</div>
-            <div class="assignment-desc">300-400 word reflection on Plato's Allegory of the Cave</div>
+            <div class="assignment-desc">300-400 word reflection on Plato's Allegory of the Cave - Due Thursday</div>
         </div>
         <div class="assignment-info" style="background: #e6fffa; border-left: 3px solid #319795;">
             <a href="https://logic1-phl202.streamlit.app/" target="_blank" style="text-decoration: none; display: block;">
@@ -532,21 +532,21 @@ def main():
             <a href="https://phl201-week3.streamlit.app/" target="_blank" class="lesson-card active">
                 <div class="lesson-icon">✏️</div>
                 <h4 class="lesson-title">Writing Revision Workshop</h4>
-                <p class="lesson-type">Writing Improvement</p>
+                <p class="lesson-type">Tuesday • Writing Improvement</p>
             </a>
             <a href="https://phl201-week3.streamlit.app/" target="_blank" class="lesson-card active">
                 <div class="lesson-icon">💡</div>
                 <h4 class="lesson-title">Plato's Theory of Forms</h4>
-                <p class="lesson-type">Metaphysics & Reality</p>
+                <p class="lesson-type">Thursday • Metaphysics & Reality</p>
             </a>
         </div>
         <div class="assignment-info">
             <div class="assignment-title">Assignment 2: Rewritten Video Reflection (4.6%)</div>
-            <div class="assignment-desc">Revised Cave reflection incorporating Theory of Forms</div>
+            <div class="assignment-desc">Revised Cave reflection incorporating Theory of Forms - Due Tuesday</div>
         </div>
         <div class="assignment-info">
             <div class="assignment-title">Assignment 3: Aristotelian Ethics Reading Response (4.6%)</div>
-            <div class="assignment-desc">350-400 word analysis of virtue ethics</div>
+            <div class="assignment-desc">350-400 word analysis of virtue ethics - Due Thursday</div>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -562,12 +562,17 @@ def main():
             <div class="lesson-card coming-soon">
                 <div class="lesson-icon">🏰</div>
                 <h4 class="lesson-title">Medieval Philosophy - Augustine & Aquinas</h4>
-                <p class="lesson-type">Medieval Thought</p>
+                <p class="lesson-type">Tuesday</p>
             </div>
             <a href="https://phl201-epistemology.streamlit.app/" target="_blank" class="lesson-card active">
                 <div class="lesson-icon">🔍</div>
                 <h4 class="lesson-title">Epistemology: Theory of Knowledge</h4>
-                <p class="lesson-type">Knowledge & Belief</p>
+                <p class="lesson-type">Thursday • Knowledge & Belief</p>
+            </a>
+            <a href="https://phl201-week4-quiz.streamlit.app/" target="_blank" class="lesson-card quiz">
+                <div class="lesson-icon">🧠</div>
+                <h4 class="lesson-title">Week 4: Philosophy Quiz (85 Questions)</h4>
+                <p class="lesson-type">Assessment • Ancient Philosophy & Human Nature</p>
             </a>
         </div>
         <div class="assignment-info">
@@ -609,7 +614,7 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Week 5: Eastern Philosophy - NOW WITH EXAM 1
+    # Week 5: Eastern Philosophy
     st.markdown("""
     <div class="week-section">
         <div class="week-title">
@@ -620,21 +625,147 @@ def main():
             <a href="https://phl202-buddhism.streamlit.app/" target="_blank" class="lesson-card active">
                 <div class="lesson-icon">☸️</div>
                 <h4 class="lesson-title">Buddhist Philosophy</h4>
-                <p class="lesson-type">Eastern Wisdom</p>
+                <p class="lesson-type">Tuesday • Eastern Wisdom</p>
             </a>
             <div class="lesson-card coming-soon">
                 <div class="lesson-icon">📜</div>
                 <h4 class="lesson-title">Confucian Thought</h4>
-                <p class="lesson-type">Social Philosophy</p>
+                <p class="lesson-type">Thursday • Social Philosophy</p>
             </div>
         </div>
         <div class="assignment-info">
             <div class="assignment-title">Assignment 5: Eastern Philosophy Reflection Paper (4.6%)</div>
-            <div class="assignment-desc">350-400 word reflection on Buddhist philosophy and its relevance</div>
+            <div class="assignment-desc">350-400 word reflection on Buddhist philosophy and its relevance - Due Thursday</div>
         </div>
-        <div class="assignment-info" style="background: #fff5f5; border-left: 3px solid #e53e3e;">
-            <a href="https://phl201-exam1.streamlit.app/" target="_blank" style="text-decoration: none; display: block;">
-                <div style="background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%); color: white; padding: 1rem 1.5rem; border-radius: 8px; text-align: center; transition: all 0.2s ease; cursor: pointer; border: 2px solid #ffd700;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                    <div style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem;">📝🎓 EXAM 1: Comprehensive Philosophy Assessment</div>
-                    <div style="font-size: 0.9rem; opacity: 0.95; margin-bottom: 0.5rem;">120 Questions • Tutorial Mode • Instant Feedback</div>
-                    <div style="font-size: 0.85rem; opacity: 0.9;">
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Remaining weeks
+    weeks_data = [
+        {
+            "week": 6,
+            "title": "African & Indigenous Philosophy",
+            "lessons": [("African Philosophy Traditions", "🌍", "Tuesday"), ("Indigenous Philosophical Perspectives", "🪶", "Thursday")],
+            "assignment": "Assignment 6: Cultural Philosophy Comparison Chart (4.6%)"
+        },
+        {
+            "week": 7,
+            "title": "Modern Philosophy",
+            "lessons": [("Descartes & Rationalism", "🧠", "Tuesday"), ("Empiricism - Locke & Hume", "👁️", "Thursday")],
+            "assignment": "Assignment 7: Rationalism vs. Empiricism Debate Preparation (4.6%)"
+        },
+        {
+            "week": 8,
+            "title": "Midterm Week",
+            "lessons": [("Midterm Review", "📚", "Tuesday"), ("MIDTERM EXAM", "📝", "Thursday")],
+            "assignment": "Midterm Examination (20%)",
+            "exam": True
+        },
+        {
+            "week": 9,
+            "title": "Kant & Utilitarianism",
+            "lessons": [("Kant's Critical Philosophy", "⚖️", "Tuesday"), ("Ethics - Utilitarianism", "🎯", "Thursday")],
+            "assignment": "Assignment 8: Ethical Theory Application Exercise (4.6%)"
+        },
+        {
+            "week": 10,
+            "title": "Ethical Theories",
+            "lessons": [("Deontological Ethics", "📋", "Tuesday"), ("Virtue Ethics", "🌟", "Thursday")],
+            "assignment": "Assignment 9: Personal Ethics Philosophy Paper (4.6%)"
+        },
+        {
+            "week": 11,
+            "title": "Political Philosophy",
+            "lessons": [("Social Contract Theory", "🤝", "Tuesday"), ("Justice and Rights", "⚖️", "Thursday")],
+            "assignment": "Assignment 10: Political Philosophy Case Study Analysis (4.6%)"
+        },
+        {
+            "week": 12,
+            "title": "Philosophy of Science",
+            "lessons": [("Philosophy of Science", "🔬", "Tuesday"), ("Thanksgiving Break", "🦃", "Thursday")],
+            "assignment": "Assignment 11: Science and Philosophy Reflection (4.6%)"
+        },
+        {
+            "week": 13,
+            "title": "Epistemology - Advanced Topics",
+            "lessons": [("Gettier Problem Critique", "🔍", "Tuesday"), ("Knowledge & Justification", "📖", "Thursday")],
+            "assignment": "Assignment 12: Philosophical Critique Essay (4.6%)",
+            "active_links": ["https://phl201-critique.streamlit.app/"]
+        },
+        {
+            "week": 14,
+            "title": "Contemporary Philosophy",
+            "lessons": [("Contemporary Philosophy Issues", "🌐", "Tuesday"), ("Student Philosopher Presentations", "🎤", "Thursday")],
+            "assignment": "Assignment 13: Philosopher Research Presentation (4.8%)"
+        },
+        {
+            "week": 15,
+            "title": "Philosophy & Technology",
+            "lessons": [("Philosophy and Technology", "💻", "Tuesday"), ("Final Review Session", "📖", "Thursday")],
+            "assignment": "Final Exam Preparation"
+        },
+        {
+            "week": 16,
+            "title": "Final Examination",
+            "lessons": [("FINAL EXAM", "📝", "Tuesday")],
+            "assignment": "Final Examination (20%)",
+            "exam": True
+        }
+    ]
+
+    for week_info in weeks_data:
+        section_class = "week-section exam-week" if week_info.get("exam") else "week-section"
+        st.markdown(f"""
+        <div class="{section_class}">
+            <div class="week-title">
+                <div class="week-number">{week_info['week']}</div>
+                Week {week_info['week']}: {week_info['title']}
+            </div>
+            <div class="lesson-grid">
+        """, unsafe_allow_html=True)
+        
+        active_links = week_info.get("active_links", [])
+        for idx, lesson_data in enumerate(week_info["lessons"]):
+            lesson_title, icon, day = lesson_data
+            
+            if week_info.get("exam"):
+                card_class = "lesson-card exam-card"
+                link_html = f'<div class="{card_class}">'
+                close_tag = "</div>"
+            elif idx < len(active_links):
+                card_class = "lesson-card active"
+                link_html = f'<a href="{active_links[idx]}" target="_blank" class="{card_class}">'
+                close_tag = "</a>"
+            else:
+                card_class = "lesson-card coming-soon"
+                link_html = f'<div class="{card_class}">'
+                close_tag = "</div>"
+            
+            st.markdown(f"""
+                {link_html}
+                    <div class="lesson-icon">{icon}</div>
+                    <h4 class="lesson-title">{lesson_title}</h4>
+                    <p class="lesson-type">{day}</p>
+                {close_tag}
+            """, unsafe_allow_html=True)
+        
+        st.markdown("""
+            </div>
+            <div class="assignment-info">
+        """, unsafe_allow_html=True)
+        
+        if week_info.get("exam"):
+            st.markdown(f"""
+                <div class="assignment-title">{week_info['assignment']}</div>
+                <div class="assignment-desc">Comprehensive examination covering course materials</div>
+            """, unsafe_allow_html=True)
+        else:
+            st.markdown(f"""
+                <div class="assignment-title">{week_info['assignment']}</div>
+                <div class="assignment-desc">Weekly philosophical writing and reflection assignment</div>
+            """, unsafe_allow_html=True)
+        
+        st.markdown("</div></div>", unsafe_allow_html=True)
+
+if __name__ == "__main__":
+    main()
